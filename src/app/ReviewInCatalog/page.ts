@@ -71,18 +71,17 @@ export class ReviewInCatalog extends LitElement {
       .then((res) => res.json())
       .then((data) => {
         if (data && Array.isArray(data.data)) {
-          // 각 리뷰에 likes 필드가 없으면 0으로 초기화
           this.reviews = data.data.map((review: Review) => ({
             ...review,
             likes: typeof review.likes === "number" ? review.likes : 0,
           }));
           this.requestUpdate();
         } else {
-          console.error("리뷰 데이터 구조가 예상과 다릅니다.", data);
+          console.error("error:", data);
         }
       })
       .catch((e) => {
-        console.error("리뷰 데이터 fetch 실패:", e);
+        console.error("error:", e);
       });
   }
 
@@ -98,7 +97,6 @@ export class ReviewInCatalog extends LitElement {
   }
 
   private handleLikeClick(index: number) {
-    // 새로운 배열 생성(불변성 유지)
     const newReviews = [...this.reviews];
     newReviews[index] = {
       ...newReviews[index],

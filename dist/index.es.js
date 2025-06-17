@@ -282,14 +282,14 @@ w.elementStyles = [], w.shadowRootOptions = { mode: "open" }, w[P("elementProper
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const O = globalThis, z = O.trustedTypes, ot = z ? z.createPolicy("lit-html", { createHTML: (r) => r }) : void 0, ut = "$lit$", f = `lit$${Math.random().toFixed(9).slice(2)}$`, $t = "?" + f, xt = `<${$t}>`, A = document, U = () => A.createComment(""), N = (r) => r === null || typeof r != "object" && typeof r != "function", G = Array.isArray, Ct = (r) => G(r) || typeof (r == null ? void 0 : r[Symbol.iterator]) == "function", L = `[ 	
+const k = globalThis, z = k.trustedTypes, ot = z ? z.createPolicy("lit-html", { createHTML: (r) => r }) : void 0, ut = "$lit$", f = `lit$${Math.random().toFixed(9).slice(2)}$`, $t = "?" + f, xt = `<${$t}>`, A = document, U = () => A.createComment(""), N = (r) => r === null || typeof r != "object" && typeof r != "function", G = Array.isArray, Ct = (r) => G(r) || typeof (r == null ? void 0 : r[Symbol.iterator]) == "function", L = `[ 	
 \f\r]`, C = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, nt = /-->/g, ht = />/g, v = RegExp(`>|${L}(?:([^\\s"'>=/]+)(${L}*=${L}*(?:[^ 	
-\f\r"'\`<>=]|("|')|))|$)`, "g"), at = /'/g, lt = /"/g, ft = /^(?:script|style|textarea|title)$/i, Pt = (r) => (t, ...e) => ({ _$litType$: r, strings: t, values: e }), k = Pt(1), E = Symbol.for("lit-noChange"), d = Symbol.for("lit-nothing"), ct = /* @__PURE__ */ new WeakMap(), m = A.createTreeWalker(A, 129);
+\f\r"'\`<>=]|("|')|))|$)`, "g"), at = /'/g, lt = /"/g, ft = /^(?:script|style|textarea|title)$/i, Pt = (r) => (t, ...e) => ({ _$litType$: r, strings: t, values: e }), O = Pt(1), E = Symbol.for("lit-noChange"), d = Symbol.for("lit-nothing"), ct = /* @__PURE__ */ new WeakMap(), m = A.createTreeWalker(A, 129);
 function _t(r, t) {
   if (!G(r) || !r.hasOwnProperty("raw")) throw Error("invalid template strings array");
   return ot !== void 0 ? ot.createHTML(t) : t;
 }
-const Ot = (r, t) => {
+const kt = (r, t) => {
   const e = r.length - 1, s = [];
   let i, o = t === 2 ? "<svg>" : t === 3 ? "<math>" : "", n = C;
   for (let a = 0; a < e; a++) {
@@ -306,7 +306,7 @@ class T {
     let i;
     this.parts = [];
     let o = 0, n = 0;
-    const a = t.length - 1, h = this.parts, [c, p] = Ot(t, e);
+    const a = t.length - 1, h = this.parts, [c, p] = kt(t, e);
     if (this.el = T.createElement(c, s), m.currentNode = this.el.content, e === 2 || e === 3) {
       const l = this.el.content.firstChild;
       l.replaceWith(...l.childNodes);
@@ -345,7 +345,7 @@ function S(r, t, e = r, s) {
   const o = N(t) ? void 0 : t._$litDirective$;
   return (i == null ? void 0 : i.constructor) !== o && ((a = i == null ? void 0 : i._$AO) == null || a.call(i, !1), o === void 0 ? i = void 0 : (i = new o(r), i._$AT(r, e, s)), s !== void 0 ? (e._$Co ?? (e._$Co = []))[s] = i : e._$Cl = i), i !== void 0 && (t = S(r, i._$AS(r, t.values), i, s)), t;
 }
-class kt {
+class Ot {
   constructor(t, e) {
     this._$AV = [], this._$AN = void 0, this._$AD = t, this._$AM = e;
   }
@@ -409,7 +409,7 @@ class M {
     const { values: e, _$litType$: s } = t, i = typeof s == "number" ? this._$AC(t) : (s.el === void 0 && (s.el = T.createElement(_t(s.h, s.h[0]), this.options)), s);
     if (((o = this._$AH) == null ? void 0 : o._$AD) === i) this._$AH.p(e);
     else {
-      const n = new kt(i, this), a = n.u(this.options);
+      const n = new Ot(i, this), a = n.u(this.options);
       n.p(e), this.T(a), this._$AH = n;
     }
   }
@@ -502,8 +502,8 @@ class Mt {
     S(this, t);
   }
 }
-const V = O.litHtmlPolyfillSupport;
-V == null || V(T, M), (O.litHtmlVersions ?? (O.litHtmlVersions = [])).push("3.3.0");
+const V = k.litHtmlPolyfillSupport;
+V == null || V(T, M), (k.litHtmlVersions ?? (k.litHtmlVersions = [])).push("3.3.0");
 const Ht = (r, t, e) => {
   const s = (e == null ? void 0 : e.renderBefore) ?? t;
   let i = s._$litPart$;
@@ -634,7 +634,7 @@ var zt = Object.getOwnPropertyDescriptor, jt = (r, t, e, s) => {
 };
 let W = class extends b {
   render() {
-    return k`
+    return O`
       <div class="filter">
         <button @click=${this._onClick}>필터</button>
       </div>
@@ -716,14 +716,14 @@ let g = class extends b {
     (t = super.updated) == null || t.call(this, r), r.has("goodsNo") && (console.log("update: goodsNo"), this.fetchReviewData());
   }
   render() {
-    return this.isVisible === "off" ? null : k`
+    return this.isVisible === "off" ? null : O`
       <option-filter-button
         @filter-click=${this.handleClick}
       ></option-filter-button>
       <div style="padding: 0 15px;">상품 번호 : ${this.goodsNo}</div>
       <ul class="review_list">
-        ${this.reviews.length === 0 ? k`<li class="review_item.empty">리뷰 없음</li>` : this.reviews.map(
-      (r, t) => k`
+        ${this.reviews.length === 0 ? O`<li class="review_item empty">리뷰 없음</li>` : this.reviews.map(
+      (r, t) => O`
                 <li class="review_item">
                   <div class="review_user">reviewId: ${r.reviewId}</div>
                   <div class="review_content">${r.content}</div>
@@ -746,15 +746,19 @@ g.styles = [
   j`
       .review_list {
         list-style: none;
-        padding: 0 15px;
         margin: 0;
       }
       .review_item {
         border-bottom: 1px solid #eee;
-        padding: 12px 0;
+        padding: 12px 15px;
         &.empty {
           background: #eee;
           width: 100%;
+          height: 200px;
+          padding: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
       }
       .review_user {
@@ -763,6 +767,8 @@ g.styles = [
       }
       .review_content {
         margin-bottom: 4px;
+        word-break: break-all;
+        white-space: pre-line;
       }
       .review_date {
         color: #bbb;
@@ -805,7 +811,7 @@ let F = class extends b {
     };
   }
   render() {
-    return k`
+    return O`
       <div class="black-box" @click=${this._onBlackBoxClick}>
         외부 연동 커스텀 이벤트
       </div>

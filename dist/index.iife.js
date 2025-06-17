@@ -86,7 +86,7 @@ var ReviewComponent=function(u){"use strict";/**
       ></option-filter-button>
       <div style="padding: 0 15px;">상품 번호 : ${this.goodsNo}</div>
       <ul class="review_list">
-        ${this.reviews.length===0?R`<li class="review_item.empty">리뷰 없음</li>`:this.reviews.map((t,e)=>R`
+        ${this.reviews.length===0?R`<li class="review_item empty">리뷰 없음</li>`:this.reviews.map((t,e)=>R`
                 <li class="review_item">
                   <div class="review_user">reviewId: ${t.reviewId}</div>
                   <div class="review_content">${t.content}</div>
@@ -103,15 +103,19 @@ var ReviewComponent=function(u){"use strict";/**
     `}},u.ReviewInCatalog.styles=[X,H`
       .review_list {
         list-style: none;
-        padding: 0 15px;
         margin: 0;
       }
       .review_item {
         border-bottom: 1px solid #eee;
-        padding: 12px 0;
+        padding: 12px 15px;
         &.empty {
           background: #eee;
           width: 100%;
+          height: 200px;
+          padding: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
       }
       .review_user {
@@ -120,6 +124,8 @@ var ReviewComponent=function(u){"use strict";/**
       }
       .review_content {
         margin-bottom: 4px;
+        word-break: break-all;
+        white-space: pre-line;
       }
       .review_date {
         color: #bbb;
