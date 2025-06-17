@@ -18,12 +18,20 @@ export class ReviewInCatalog extends LitElement {
     css`
       .review_list {
         list-style: none;
-        padding: 0 15px;
         margin: 0;
       }
       .review_item {
         border-bottom: 1px solid #eee;
-        padding: 12px 0;
+        padding: 12px 15px;
+        &.empty {
+          background: #eee;
+          width: 100%;
+          height: 200px;
+          padding: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
       }
       .review_user {
         font-weight: bold;
@@ -31,6 +39,8 @@ export class ReviewInCatalog extends LitElement {
       }
       .review_content {
         margin-bottom: 4px;
+        word-break: break-all;
+        white-space: pre-line;
       }
       .review_date {
         color: #bbb;
@@ -77,6 +87,7 @@ export class ReviewInCatalog extends LitElement {
   }
 
   connectedCallback() {
+    console.log("connectedCallback");
     super.connectedCallback();
     this.fetchReviewData();
   }
@@ -99,6 +110,10 @@ export class ReviewInCatalog extends LitElement {
 
   updated(changed: PropertyValues) {
     super.updated?.(changed);
+    if (changed.has("goodsNo")) {
+      console.log("update: goodsNo");
+      this.fetchReviewData();
+    }
   }
 
   render() {
@@ -110,21 +125,23 @@ export class ReviewInCatalog extends LitElement {
       ></option-filter-button>
       <div style="padding: 0 15px;">상품 번호 : ${this.goodsNo}</div>
       <ul class="review_list">
-        ${this.reviews.map(
-          (r: Review, i: number) => html`
-            <li class="review_item">
-              <div class="review_user">reviewId: ${r.reviewId}</div>
-              <div class="review_content">${r.content}</div>
-              <div class="review_date">
-                ${r.createdDateTime ? r.createdDateTime.split(" ")[0] : ""}
-              </div>
-              <div class="review_score">별점: ${r.score}</div>
-              <button @click=${() => this.handleLikeClick(i)}>
-                좋아요: ${r.likes || 0}
-              </button>
-            </li>
-          `
-        )}
+        ${this.reviews.length === 0
+          ? html`<li class="review_item empty">리뷰 없음</li>`
+          : this.reviews.map(
+              (r: Review, i: number) => html`
+                <li class="review_item">
+                  <div class="review_user">reviewId: ${r.reviewId}</div>
+                  <div class="review_content">${r.content}</div>
+                  <div class="review_date">
+                    ${r.createdDateTime ? r.createdDateTime.split(" ")[0] : ""}
+                  </div>
+                  <div class="review_score">별점: ${r.score}</div>
+                  <button @click=${() => this.handleLikeClick(i)}>
+                    좋아요: ${r.likes || 0}
+                  </button>
+                </li>
+              `
+            )}
       </ul>
     `;
   }
