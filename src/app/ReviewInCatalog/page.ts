@@ -49,25 +49,18 @@ export class ReviewInCatalog extends LitElement {
     `,
   ];
 
-  @property({ type: String }) goodsNo: string;
-  @property({ type: String }) isVisible: "on" | "off";
-  @state() private reviews: Review[];
-  @state() private pageSize: number;
-  @state() private pageNumber: number;
+  @property({ type: String }) goodsNo: string = "";
+  @property({ type: String }) isVisible: "on" | "off" = "on";
+  @state() private reviews: Review[] = [];
+  @state() private pageSize: number = 5;
+  @state() private pageNumber: number = 0;
 
   constructor() {
     super();
-    this.goodsNo = "";
-    this.isVisible = "on";
-    this.reviews = [];
-    this.pageSize = 5;
-    this.pageNumber = 0;
   }
 
   fetchReviewData() {
-    fetch(
-      `https://mapi-dev.oliveyoung.co.kr/review/api/v1/reviews/${this.goodsNo}/public?pageNumber=${this.pageNumber}&pageSize=${this.pageSize}`
-    )
+    fetch(`https://mapi-dev.oliveyoung.co.kr/review/api/v1/reviews/${this.goodsNo}/public?pageNumber=${this.pageNumber}&pageSize=${this.pageSize}`)
       .then((res) => res.json())
       .then((data) => {
         if (data && Array.isArray(data.data)) {
@@ -86,7 +79,6 @@ export class ReviewInCatalog extends LitElement {
   }
 
   connectedCallback() {
-    console.log("connectedCallback");
     super.connectedCallback();
     this.fetchReviewData();
   }
@@ -112,15 +104,16 @@ export class ReviewInCatalog extends LitElement {
       console.log("update: goodsNo");
       this.fetchReviewData();
     }
+    if (changed.has("isVisible")) {
+      this.requestUpdate();
+    }
   }
 
   render() {
     if (this.isVisible === "off") return null;
 
     return html`
-      <option-filter-button
-        @filter-click=${this.handleClick}
-      ></option-filter-button>
+      <option-filter-button @filter-click=${this.handleClick}></option-filter-button>
       <div style="padding: 0 15px;">상품 번호 : ${this.goodsNo}</div>
       <ul class="review_list">
         ${this.reviews.length === 0
@@ -130,13 +123,9 @@ export class ReviewInCatalog extends LitElement {
                 <li class="review_item">
                   <div class="review_user">reviewId: ${r.reviewId}</div>
                   <div class="review_content">${r.content}</div>
-                  <div class="review_date">
-                    ${r.createdDateTime ? r.createdDateTime.split(" ")[0] : ""}
-                  </div>
+                  <div class="review_date">${r.createdDateTime ? r.createdDateTime.split(" ")[0] : ""}</div>
                   <div class="review_score">별점: ${r.score}</div>
-                  <button @click=${() => this.handleLikeClick(i)}>
-                    좋아요: ${r.likes || 0}
-                  </button>
+                  <button @click=${() => this.handleLikeClick(i)}>좋아요: ${r.likes || 0}</button>
                 </li>
               `
             )}

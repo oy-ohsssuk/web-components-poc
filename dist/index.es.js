@@ -824,7 +824,7 @@ z.styles = [
   tt,
   B`
       .black-box {
-        background: #111;
+        background: #111111;
         color: #fff;
         text-align: center;
         padding: 15px 0;

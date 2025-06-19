@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "review-wc-poc",
+  "name": "@oy-ohsssuk/review-wc-poc",
   "version": "1.1.5",
   "license": "UNLICENSED",
   "description": "Lit-based web component poc",
@@ -21,14 +21,27 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "peerDependencies": {
     "lit": ">=3.0.0"
   },
+  "dependencies": {
+    "lit": ">=3.0.0"
+  },
   "devDependencies": {
+    "@chromatic-com/storybook": "^4.0.0",
+    "@storybook/addon-docs": "^9.0.12",
+    "@storybook/web-components-vite": "^9.0.12",
     "@types/node": "^24.0.0",
+    "eslint": "^9.29.0",
+    "eslint-plugin-lit": "^2.1.1",
+    "eslint-plugin-wc": "^3.0.1",
+    "prettier": "^3.5.3",
     "sass": "^1.89.2",
+    "storybook": "^9.0.12",
     "typescript": "^5.8.3",
     "vite": "^6.3.5",
     "vite-plugin-dts": "^3.8.2"
@@ -38,9 +51,7 @@
     "lit",
     "vite"
   ],
-  "dependencies": {
-    "@playwright/test": "^1.53.0",
-    "@vaadin/router": "1.7.5",
-    "lit": ">=3.0.0"
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }
