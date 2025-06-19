@@ -80,23 +80,17 @@ var ReviewComponent=function(p){"use strict";/**
           border: 1px solid #000;
         }
       }
-    `],Y=jt([G("option-filter-button")],Y);var Dt=Object.defineProperty,zt=Object.getOwnPropertyDescriptor,C=(r,t,e,s)=>{for(var i=s>1?void 0:s?zt(t,e):t,o=r.length-1,n;o>=0;o--)(n=r[o])&&(i=(s?n(t,e,i):n(i))||i);return s&&i&&Dt(t,e,i),i};p.ReviewInCatalog=class extends A{constructor(){super(),this.goodsNo="",this.isVisible="on",this.reviews=[],this.pageSize=5,this.pageNumber=0}fetchReviewData(){fetch(`https://mapi-dev.oliveyoung.co.kr/review/api/v1/reviews/${this.goodsNo}/public?pageNumber=${this.pageNumber}&pageSize=${this.pageSize}`).then(t=>t.json()).then(t=>{t&&Array.isArray(t.data)?(this.reviews=t.data.map(e=>({...e,likes:typeof e.likes=="number"?e.likes:0})),this.requestUpdate()):console.error("error:",t)}).catch(t=>{console.error("error:",t)})}connectedCallback(){console.log("connectedCallback"),super.connectedCallback(),this.fetchReviewData()}handleClick(){this.pageNumber++,this.fetchReviewData()}handleLikeClick(t){const e=[...this.reviews];e[t]={...e[t],likes:(e[t].likes||0)+1},this.reviews=e,this.requestUpdate()}updated(t){var e;(e=super.updated)==null||e.call(this,t),t.has("goodsNo")&&(console.log("update: goodsNo"),this.fetchReviewData())}render(){return this.isVisible==="off"?null:R`
-      <option-filter-button
-        @filter-click=${this.handleClick}
-      ></option-filter-button>
+    `],Y=jt([G("option-filter-button")],Y);var Dt=Object.defineProperty,zt=Object.getOwnPropertyDescriptor,C=(r,t,e,s)=>{for(var i=s>1?void 0:s?zt(t,e):t,o=r.length-1,n;o>=0;o--)(n=r[o])&&(i=(s?n(t,e,i):n(i))||i);return s&&i&&Dt(t,e,i),i};p.ReviewInCatalog=class extends A{constructor(){super(),this.goodsNo="",this.isVisible="on",this.reviews=[],this.pageSize=5,this.pageNumber=0}fetchReviewData(){fetch(`https://mapi-dev.oliveyoung.co.kr/review/api/v1/reviews/${this.goodsNo}/public?pageNumber=${this.pageNumber}&pageSize=${this.pageSize}`).then(t=>t.json()).then(t=>{t&&Array.isArray(t.data)?(this.reviews=t.data.map(e=>({...e,likes:typeof e.likes=="number"?e.likes:0})),this.requestUpdate()):console.error("error:",t)}).catch(t=>{console.error("error:",t)})}connectedCallback(){super.connectedCallback(),this.fetchReviewData()}handleClick(){this.pageNumber++,this.fetchReviewData()}handleLikeClick(t){const e=[...this.reviews];e[t]={...e[t],likes:(e[t].likes||0)+1},this.reviews=e,this.requestUpdate()}updated(t){var e;(e=super.updated)==null||e.call(this,t),t.has("goodsNo")&&(console.log("update: goodsNo"),this.fetchReviewData()),t.has("isVisible")&&this.requestUpdate()}render(){return this.isVisible==="off"?null:R`
+      <option-filter-button @filter-click=${this.handleClick}></option-filter-button>
       <div style="padding: 0 15px;">상품 번호 : ${this.goodsNo}</div>
       <ul class="review_list">
         ${this.reviews.length===0?R`<li class="review_item empty">리뷰 없음</li>`:this.reviews.map((t,e)=>R`
                 <li class="review_item">
                   <div class="review_user">reviewId: ${t.reviewId}</div>
                   <div class="review_content">${t.content}</div>
-                  <div class="review_date">
-                    ${t.createdDateTime?t.createdDateTime.split(" ")[0]:""}
-                  </div>
+                  <div class="review_date">${t.createdDateTime?t.createdDateTime.split(" ")[0]:""}</div>
                   <div class="review_score">별점: ${t.score}</div>
-                  <button @click=${()=>this.handleLikeClick(e)}>
-                    좋아요: ${t.likes||0}
-                  </button>
+                  <button @click=${()=>this.handleLikeClick(e)}>좋아요: ${t.likes||0}</button>
                 </li>
               `)}
       </ul>

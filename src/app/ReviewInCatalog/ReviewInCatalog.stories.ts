@@ -12,6 +12,7 @@ const meta: Meta = {
         sourceState: "shown",
       },
     },
+    layout: "fullscreen",
   },
   argTypes: {
     goodsNo: {
