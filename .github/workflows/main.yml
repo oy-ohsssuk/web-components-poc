@@ -28,12 +28,6 @@ jobs:
         env:
           WC_POC_TOKEN: ${{ secrets.WC_POC_TOKEN }}
 
-      - name: Set up git for GitHub Actions
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git remote set-url origin https://x-access-token:${{ secrets.WC_POC_TOKEN }}@github.com/${{ github.repository }}.git
-
       - name: Bump version (patch)
         run: npm version patch
 
