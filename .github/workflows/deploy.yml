@@ -6,6 +6,8 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -14,14 +16,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
+          registry-url: "https://npm.pkg.github.com"
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install pnpm
         run: npm install -g pnpm
-
-      - name: Set up GitHub Packages auth
-        run: echo "//npm.pkg.github.com/:_authToken=${WC_POC_TOKEN}" > ~/.npmrc
-        env:
-          WC_POC_TOKEN: ${{ secrets.WC_POC_TOKEN }}
 
       - name: Install dependencies
         run: pnpm install
@@ -33,6 +32,4 @@ jobs:
           path: dist
 
       - name: Publish to GitHub Packages
-        run: npm publish --registry=https://npm.pkg.github.com/ --userconfig ~/.npmrc
-        env:
-          WC_POC_TOKEN: ${{ secrets.WC_POC_TOKEN }}
+        run: npm publish --registry=https://npm.pkg.github.com/

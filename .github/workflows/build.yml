@@ -17,23 +17,20 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
+          registry-url: "https://npm.pkg.github.com"
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install pnpm
         run: npm install -g pnpm
-
-      - name: Set up GitHub Packages auth
-        run: echo "//npm.pkg.github.com/:_authToken=${WC_POC_TOKEN}" > ~/.npmrc
-        env:
-          WC_POC_TOKEN: ${{ secrets.WC_POC_TOKEN }}
 
       - name: Set up git for GitHub Actions
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git remote set-url origin https://x-access-token:${{ secrets.WC_POC_TOKEN }}@github.com/${{ github.repository }}.git
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
 
-      - name: Bump version (patch)
-        run: pnpm version patch
+      - name: Bump version (minor)
+        run: pnpm version minor
 
       - name: Pull latest changes
         run: git pull --rebase origin main
