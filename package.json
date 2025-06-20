@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "@oy-ohsssuk/review-wc-poc",
-  "version": "1.21.0",
+  "version": "1.22.0",
   "license": "UNLICENSED",
   "description": "Lit-based web component poc",
   "main": "dist/index.js",
