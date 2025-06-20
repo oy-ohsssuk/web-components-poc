@@ -35,13 +35,7 @@ jobs:
           git remote set-url origin https://x-access-token:${{ secrets.WC_POC_TOKEN }}@github.com/${{ github.repository }}.git
 
       - name: Bump version (patch)
-        run: npm version patch
-
-      - name: Pull latest changes
-        run: git pull --rebase origin main
-
-      - name: Push changes and tags
-        run: git push origin HEAD:main --follow-tags
+        run: npm version patch --no-git-tag-version --no-commit-hooks
 
       - name: Install dependencies
         run: pnpm install
