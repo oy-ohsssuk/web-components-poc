@@ -37,6 +37,9 @@ jobs:
       - name: Bump version (patch)
         run: npm version patch
 
+      - name: Pull latest changes
+        run: git pull --rebase origin main
+
       - name: Push changes and tags
         run: git push origin HEAD:main --follow-tags
 
