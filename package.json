@@ -34,6 +34,7 @@
   "devDependencies": {
     "@chromatic-com/storybook": "^4.0.0",
     "@storybook/addon-docs": "^9.0.12",
+    "@storybook/web-components": "^9.0.12",
     "@storybook/web-components-vite": "^9.0.12",
     "@types/node": "^24.0.0",
     "eslint": "^9.29.0",
