@@ -26,14 +26,14 @@ jobs:
         env:
           WC_POC_TOKEN: ${{ secrets.WC_POC_TOKEN }}
 
-      - name: Bump version (patch)
-        run: npm version patch
-
       - name: Push changes and tags
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git push origin HEAD:main --follow-tags
+
+      - name: Bump version (patch)
+        run: npm version patch
 
       - name: Install dependencies
         run: pnpm install
