@@ -68,7 +68,7 @@ jobs:
         with:
           node-version: "20"
           registry-url: "https://npm.pkg.github.com"
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.WC_POC_TOKEN }}
 
       - name: Install pnpm
         run: npm install -g pnpm
