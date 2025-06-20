@@ -9,6 +9,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -26,14 +28,17 @@ jobs:
         env:
           WC_POC_TOKEN: ${{ secrets.WC_POC_TOKEN }}
 
-      - name: Push changes and tags
+      - name: Set up git for GitHub Actions
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git push origin HEAD:main --follow-tags
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin https://x-access-token:${{ secrets.WC_POC_TOKEN }}@github.com/${{ github.repository }}.git
 
       - name: Bump version (patch)
         run: npm version patch
+
+      - name: Push changes and tags
+        run: git push origin HEAD:main --follow-tags
 
       - name: Install dependencies
         run: pnpm install
