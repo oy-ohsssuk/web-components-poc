@@ -5,9 +5,11 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   build:
+    if: github.event_name != 'workflow_dispatch'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -57,7 +59,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: build
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'push' || github.event_name == 'pull_request'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -83,6 +85,7 @@ jobs:
         with:
           name: dist
           path: dist
+          # optional: true # 필요시 아티팩트가 없을 때 에러 방지용
 
       - name: Publish to GitHub Packages
         run: npm publish --registry=https://npm.pkg.github.com/ --userconfig ~/.npmrc
