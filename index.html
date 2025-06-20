@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>storybook - Storybook</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    
+    <style>
+      @font-face {
+        font-family: 'Nunito Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('./sb-common-assets/nunito-sans-regular.woff2') format('woff2');
+      }
+
+      @font-face {
+        font-family: 'Nunito Sans';
+        font-style: italic;
+        font-weight: 400;
+        font-display: swap;
+        src: url('./sb-common-assets/nunito-sans-italic.woff2') format('woff2');
+      }
+
+      @font-face {
+        font-family: 'Nunito Sans';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url('./sb-common-assets/nunito-sans-bold.woff2') format('woff2');
+      }
+
+      @font-face {
+        font-family: 'Nunito Sans';
+        font-style: italic;
+        font-weight: 700;
+        font-display: swap;
+        src: url('./sb-common-assets/nunito-sans-bold-italic.woff2') format('woff2');
+      }
+    </style>
+
+    <link href="./sb-manager/runtime.js" rel="modulepreload" />
+
+    
+    <link href="./sb-addons/storybook-core-server-presets-0/common-manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/chromatic-com-storybook-1/manager-bundle.js" rel="modulepreload" />
+    
+    <link href="./sb-addons/docs-2/manager-bundle.js" rel="modulepreload" />
+      <script>
+  const STORYBOOK_TITLE = "리뷰 컴포넌트";
+  document.title = STORYBOOK_TITLE;
+
+  // Storybook이 Docs 등에서 title을 바꿔도 항상 복구
+  const observer = new MutationObserver(() => {
+    if (document.title !== STORYBOOK_TITLE) {
+      document.title = STORYBOOK_TITLE;
+    }
+  });
+  observer.observe(document.querySelector("title"), { childList: true });
+
+  window.addEventListener("load", function () {
+    if (document.querySelector(".sidebar-header")) {
+      const titleEle = document.querySelector(".sidebar-header ").querySelector('a[title*="Storybook"]').closest("div");
+      if (titleEle) {
+        titleEle.innerHTML = '<a title="리뷰 컴포넌트" href="./?path=/docs/gettingStart" target="" class="title">리뷰 컴포넌트</a>';
+      }
+    }
+  });
+</script>
+<style>
+  .title {
+    text-decoration: none;
+    color: slategray;
+  }
+  .sidebar-header a[title="Storybook"] {
+    display: none;
+  }
+  .sidebar-header button[title="Shortcuts"] {
+    display: none;
+  }
+  .sidebar-item[data-item-id="configure-your-project--docs"] {
+    display: none;
+  }
+  .sidebar-item[data-item-id="gettingstart--docs"] {
+    display: none;
+  }
+  .a[href="/?path=/settings/whats-new"] {
+    display: none;
+  }
+</style>
+ 
+
+    <style>
+      #storybook-root[hidden] {
+        display: none !important;
+      }
+    </style>
+
+    
+  </head>
+  <body>
+    <div id="root"></div>
+
+    
+    <script>
+      
+        
+          window['FEATURES'] = {
+  "argTypeTargetsV7": true,
+  "legacyDecoratorFileOrder": false,
+  "disallowImplicitActionsInRenderV8": true,
+  "viewport": true,
+  "highlight": true,
+  "controls": true,
+  "interactions": true,
+  "actions": true,
+  "backgrounds": true,
+  "outline": true,
+  "measure": true
+};
+        
+      
+        
+          window['REFS'] = {};
+        
+      
+        
+          window['LOGLEVEL'] = "info";
+        
+      
+        
+          window['DOCS_OPTIONS'] = {
+  "defaultName": "Docs"
+};
+        
+      
+        
+          window['CONFIG_TYPE'] = "PRODUCTION";
+        
+      
+        
+      
+        
+      
+        
+          window['TAGS_OPTIONS'] = {
+  "dev-only": {
+    "excludeFromDocsStories": true
+  },
+  "docs-only": {
+    "excludeFromSidebar": true
+  },
+  "test-only": {
+    "excludeFromSidebar": true,
+    "excludeFromDocsStories": true
+  }
+};
+        
+      
+        
+          window['STORYBOOK_RENDERER'] = "web-components";
+        
+      
+        
+          window['STORYBOOK_BUILDER'] = "@storybook/builder-vite";
+        
+      
+        
+          window['STORYBOOK_FRAMEWORK'] = "@storybook/web-components-vite";
+        
+      
+    </script>
+    
+
+    <script type="module">
+      import './sb-manager/globals-runtime.js';
+
+      
+        import './sb-addons/storybook-core-server-presets-0/common-manager-bundle.js';
+      
+        import './sb-addons/chromatic-com-storybook-1/manager-bundle.js';
+      
+        import './sb-addons/docs-2/manager-bundle.js';
+      
+
+      import './sb-manager/runtime.js';
+    </script>
+  </body>
+</html>
