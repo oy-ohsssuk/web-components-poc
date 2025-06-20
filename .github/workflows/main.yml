@@ -1,4 +1,4 @@
-name: Deploy
+name: Main
 
 on:
   push:
@@ -96,6 +96,9 @@ jobs:
 
       - name: Get Version from package.json
         run: echo "VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
+
+      - name: Print build version
+        run: echo "🔖 Build/Deploy VERSION: $VERSION"
 
       # - name: Upload S3
       #   run: |
