@@ -98,10 +98,4 @@ jobs:
         run: echo "VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
 
       - name: Print build version
-        run: echo "🔖 Build/Deploy VERSION: $VERSION"
-
-      # - name: Upload S3
-      #   run: |
-      #     S3_KEY="contents/shutter/assets/${VERSION}"
-      #     aws s3 cp dist/index.iife.js s3://${DEPLOY_BUCKET}/${S3_KEY}/index.iife.js
-      #     aws s3 cp dist/common.css s3://${DEPLOY_BUCKET}/${S3_KEY}/common.css
+        run: echo "VERSION:${VERSION}"
