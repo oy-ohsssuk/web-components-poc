@@ -1,8 +1,11 @@
-name: main update
+name: main
 
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -50,6 +53,34 @@ jobs:
           name: dist
           path: dist
 
-      - name: Show deploy instruction
-        run: |
-          echo "::notice title=Manual Deploy::빌드가 끝났습니다. [여기서 배포 워크플로우 실행](https://github.com/oy-ohsssuk/web-components-poc/actions/workflows/deploy.yml) 버튼을 눌러 배포하세요."
+  deploy:
+    if: github.event_name == 'workflow_dispatch'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          registry-url: "https://npm.pkg.github.com"
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+      - name: Publish to GitHub Packages
+        run: npm publish --registry=https://npm.pkg.github.com/
