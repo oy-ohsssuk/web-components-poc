@@ -1,0 +1,38 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Set up GitHub Packages auth
+        run: echo "//npm.pkg.github.com/:_authToken=${WC_POC_TOKEN}" > ~/.npmrc
+        env:
+          WC_POC_TOKEN: ${{ secrets.WC_POC_TOKEN }}
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+
+      - name: Publish to GitHub Packages
+        run: npm publish --registry=https://npm.pkg.github.com/ --userconfig ~/.npmrc
+        env:
+          WC_POC_TOKEN: ${{ secrets.WC_POC_TOKEN }}
