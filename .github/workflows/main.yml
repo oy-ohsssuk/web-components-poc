@@ -59,6 +59,8 @@ jobs:
       name: production
     permissions:
       contents: write
+    env:
+      DEPLOY_BUCKET: "s3-dev-oymall-contents"
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -91,3 +93,12 @@ jobs:
         run: npm publish --registry=https://npm.pkg.github.com/ --userconfig ~/.npmrc
         env:
           WC_POC_TOKEN: ${{ secrets.WC_POC_TOKEN }}
+
+      - name: Get Version from package.json
+        run: echo "VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
+
+      - name: Upload S3
+        run: |
+          S3_KEY="contents/shutter/assets/${VERSION}"
+          aws s3 cp dist/index.iife.js s3://${DEPLOY_BUCKET}/${S3_KEY}/index.iife.js
+          aws s3 cp dist/common.css s3://${DEPLOY_BUCKET}/${S3_KEY}/common.css
