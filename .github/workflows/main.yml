@@ -83,4 +83,4 @@ jobs:
           path: dist
 
       - name: Publish to GitHub Packages
-        run: npm publish --registry=https://npm.pkg.github.com/
+        run: npm publish --registry=https://npm.pkg.github.com/ --userconfig ~/.npmrc
