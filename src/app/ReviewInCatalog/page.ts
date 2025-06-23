@@ -99,7 +99,7 @@ export class ReviewInCatalog extends LitElement {
   }
 
   firstUpdated() {
-    this.addEventListener("filter-click", this.handleFilterClick as EventListener);
+    this.addEventListener("filter-click", this.handleFilterClick);
   }
 
   private handleFilterClick = (e: Event) => {
