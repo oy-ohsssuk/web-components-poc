@@ -3,7 +3,7 @@
  * Copyright 2019 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const R = globalThis, K = R.ShadowRoot && (R.ShadyCSS === void 0 || R.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, Z = Symbol(), et = /* @__PURE__ */ new WeakMap();
+const H = globalThis, K = H.ShadowRoot && (H.ShadyCSS === void 0 || H.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, Z = Symbol(), et = /* @__PURE__ */ new WeakMap();
 let pt = class {
   constructor(t, e, s) {
     if (this._$cssResult$ = !0, s !== Z) throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");
@@ -32,7 +32,7 @@ const vt = (r) => new pt(typeof r == "string" ? r : r + "", void 0, Z), B = (r, 
 }, mt = (r, t) => {
   if (K) r.adoptedStyleSheets = t.map((e) => e instanceof CSSStyleSheet ? e : e.styleSheet);
   else for (const e of t) {
-    const s = document.createElement("style"), i = R.litNonce;
+    const s = document.createElement("style"), i = H.litNonce;
     i !== void 0 && s.setAttribute("nonce", i), s.textContent = e.cssText, r.appendChild(s);
   }
 }, st = K ? (r) => r : (r) => r instanceof CSSStyleSheet ? ((t) => {
@@ -314,8 +314,8 @@ class T {
     for (; (i = m.nextNode()) !== null && h.length < a; ) {
       if (i.nodeType === 1) {
         if (i.hasAttributes()) for (const l of i.getAttributeNames()) if (l.endsWith(ut)) {
-          const u = p[o++], $ = i.getAttribute(l).split(f), H = /([.?@])?(.*)/.exec(u);
-          h.push({ type: 1, index: n, name: H[2], strings: $, ctor: H[1] === "." ? Nt : H[1] === "?" ? Tt : H[1] === "@" ? Mt : I }), i.removeAttribute(l);
+          const u = p[o++], $ = i.getAttribute(l).split(f), R = /([.?@])?(.*)/.exec(u);
+          h.push({ type: 1, index: n, name: R[2], strings: $, ctor: R[1] === "." ? Nt : R[1] === "?" ? Tt : R[1] === "@" ? Mt : L }), i.removeAttribute(l);
         } else l.startsWith(f) && (h.push({ type: 6, index: n }), i.removeAttribute(l));
         if (ft.test(i.tagName)) {
           const l = i.textContent.split(f), u = l.length - 1;
@@ -362,7 +362,7 @@ class kt {
     for (; h !== void 0; ) {
       if (o === h.index) {
         let c;
-        h.type === 2 ? c = new M(n, n.nextSibling, this, t) : h.type === 1 ? c = new h.ctor(n, h.name, h.strings, this, t) : h.type === 6 && (c = new Ht(n, this, t)), this._$AV.push(c), h = s[++a];
+        h.type === 2 ? c = new M(n, n.nextSibling, this, t) : h.type === 1 ? c = new h.ctor(n, h.name, h.strings, this, t) : h.type === 6 && (c = new Rt(n, this, t)), this._$AV.push(c), h = s[++a];
       }
       o !== (h == null ? void 0 : h.index) && (n = m.nextNode(), o++);
     }
@@ -436,7 +436,7 @@ class M {
     this._$AM === void 0 && (this._$Cv = t, (e = this._$AP) == null || e.call(this, t));
   }
 }
-class I {
+class L {
   get tagName() {
     return this.element.tagName;
   }
@@ -461,7 +461,7 @@ class I {
     t === d ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, t ?? "");
   }
 }
-class Nt extends I {
+class Nt extends L {
   constructor() {
     super(...arguments), this.type = 3;
   }
@@ -469,7 +469,7 @@ class Nt extends I {
     this.element[this.name] = t === d ? void 0 : t;
   }
 }
-class Tt extends I {
+class Tt extends L {
   constructor() {
     super(...arguments), this.type = 4;
   }
@@ -477,7 +477,7 @@ class Tt extends I {
     this.element.toggleAttribute(this.name, !!t && t !== d);
   }
 }
-class Mt extends I {
+class Mt extends L {
   constructor(t, e, s, i, n) {
     super(t, e, s, i, n), this.type = 5;
   }
@@ -491,7 +491,7 @@ class Mt extends I {
     typeof this._$AH == "function" ? this._$AH.call(((e = this.options) == null ? void 0 : e.host) ?? this.element, t) : this._$AH.handleEvent(t);
   }
 }
-class Ht {
+class Rt {
   constructor(t, e, s) {
     this.element = t, this.type = 6, this._$AN = void 0, this._$AM = e, this.options = s;
   }
@@ -504,7 +504,7 @@ class Ht {
 }
 const W = O.litHtmlPolyfillSupport;
 W == null || W(T, M), (O.litHtmlVersions ?? (O.litHtmlVersions = [])).push("3.3.0");
-const Rt = (r, t, e) => {
+const Ht = (r, t, e) => {
   const s = (e == null ? void 0 : e.renderBefore) ?? t;
   let i = s._$litPart$;
   if (i === void 0) {
@@ -530,7 +530,7 @@ class b extends w {
   }
   update(t) {
     const e = this.render();
-    this.hasUpdated || (this.renderOptions.isConnected = this.isConnected), super.update(t), this._$Do = Rt(e, this.renderRoot, this.renderOptions);
+    this.hasUpdated || (this.renderOptions.isConnected = this.isConnected), super.update(t), this._$Do = Ht(e, this.renderRoot, this.renderOptions);
   }
   connectedCallback() {
     var t;
@@ -546,8 +546,8 @@ class b extends w {
 }
 var dt;
 b._$litElement$ = !0, b.finalized = !0, (dt = y.litElementHydrateSupport) == null || dt.call(y, { LitElement: b });
-const J = y.litElementPolyfillSupport;
-J == null || J({ LitElement: b });
+const F = y.litElementPolyfillSupport;
+F == null || F({ LitElement: b });
 (y.litElementVersions ?? (y.litElementVersions = [])).push("4.2.0");
 /**
  * @license
@@ -585,7 +585,7 @@ const Dt = { attribute: !0, type: String, converter: D, reflect: !1, hasChanged:
   }
   throw Error("Unsupported decorator location: " + s);
 };
-function L(r) {
+function I(r) {
   return (t, e) => typeof e == "object" ? jt(r, t, e) : ((s, i, n) => {
     const o = i.hasOwnProperty(n);
     return i.constructor.createProperty(n, s), o ? Object.getOwnPropertyDescriptor(i, n) : void 0;
@@ -597,7 +597,7 @@ function L(r) {
  * SPDX-License-Identifier: BSD-3-Clause
  */
 function Y(r) {
-  return L({ ...r, state: !0, attribute: !1 });
+  return I({ ...r, state: !0, attribute: !1 });
 }
 const tt = B`
   :host {
@@ -632,7 +632,7 @@ var zt = Object.getOwnPropertyDescriptor, Bt = (r, t, e, s) => {
     (o = r[n]) && (i = o(i) || i);
   return i;
 };
-let F = class extends b {
+let J = class extends b {
   render() {
     return U`
       <div class="filter">
@@ -644,12 +644,12 @@ let F = class extends b {
     this.dispatchEvent(
       new CustomEvent("filter-click", {
         bubbles: !0,
-        composed: !0
+        composed: !1
       })
     );
   }
 };
-F.styles = [
+J.styles = [
   tt,
   B`
       .filter {
@@ -674,17 +674,19 @@ F.styles = [
       }
     `
 ];
-F = Bt([
+J = Bt([
   X("option-filter-button")
-], F);
-var It = Object.defineProperty, Lt = Object.getOwnPropertyDescriptor, x = (r, t, e, s) => {
-  for (var i = s > 1 ? void 0 : s ? Lt(t, e) : t, n = r.length - 1, o; n >= 0; n--)
+], J);
+var Lt = Object.defineProperty, It = Object.getOwnPropertyDescriptor, x = (r, t, e, s) => {
+  for (var i = s > 1 ? void 0 : s ? It(t, e) : t, n = r.length - 1, o; n >= 0; n--)
     (o = r[n]) && (i = (s ? o(t, e, i) : o(i)) || i);
-  return s && i && It(t, e, i), i;
+  return s && i && Lt(t, e, i), i;
 };
 let g = class extends b {
   constructor() {
-    super(), this.goodsNo = "", this.isVisible = "on", this.reviews = [], this.pageSize = 5, this.pageNumber = 0;
+    super(), this.goodsNo = "", this.isVisible = "on", this.reviews = [], this.pageSize = 5, this.pageNumber = 0, this.handleFilterClick = (r) => {
+      console.log("filter!"), this.pageNumber++, this.fetchReviewData();
+    };
   }
   fetchReviewData() {
     fetch(`https://mapi-dev.oliveyoung.co.kr/review/api/v1/reviews/${this.goodsNo}/public?pageNumber=${this.pageNumber}&pageSize=${this.pageSize}`).then((r) => r.json()).then((r) => {
@@ -709,13 +711,16 @@ let g = class extends b {
       likes: (t[r].likes || 0) + 1
     }, this.reviews = t, this.requestUpdate();
   }
+  firstUpdated() {
+    this.addEventListener("filter-click", this.handleFilterClick);
+  }
   updated(r) {
     var t;
     (t = super.updated) == null || t.call(this, r), r.has("goodsNo") && (console.log("update: goodsNo"), this.fetchReviewData()), r.has("isVisible") && this.requestUpdate();
   }
   render() {
     return this.isVisible === "off" ? null : U`
-      <option-filter-button @filter-click=${this.handleClick}></option-filter-button>
+      <slot></slot>
       <div style="padding: 0 15px;">상품 번호 : ${this.goodsNo}</div>
       <ul class="review_list">
         ${this.reviews.length === 0 ? U`<li class="review_item empty">리뷰 없음</li>` : this.reviews.map(
@@ -769,10 +774,10 @@ g.styles = [
     `
 ];
 x([
-  L({ type: String })
+  I({ type: String })
 ], g.prototype, "goodsNo", 2);
 x([
-  L({ type: String })
+  I({ type: String })
 ], g.prototype, "isVisible", 2);
 x([
   Y()
@@ -806,8 +811,7 @@ let z = class extends b {
   render() {
     return U`
       <div class="black-box" @click=${this._onBlackBoxClick}>
-        외부 연동 커스텀 이벤트
-        ${this.testObj ? JSON.stringify(this.testObj, null, 2) : ""}
+        외부 연동 커스텀 이벤트 ${this.testObj ? JSON.stringify(this.testObj, null, 2) : ""}
       </div>
     `;
   }
@@ -824,7 +828,7 @@ z.styles = [
     `
 ];
 gt([
-  L({ type: Object })
+  I({ type: Object })
 ], z.prototype, "testObj", 2);
 z = gt([
   X("black-box-item")

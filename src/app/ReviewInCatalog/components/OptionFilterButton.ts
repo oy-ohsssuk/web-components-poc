@@ -42,7 +42,7 @@ export class OptionFilterButton extends LitElement {
     this.dispatchEvent(
       new CustomEvent("filter-click", {
         bubbles: true,
-        composed: true,
+        composed: false,
       })
     );
   }

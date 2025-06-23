@@ -1,4 +1,3 @@
-// 글로벌 타입 선언 (JSX 확장)
 declare global {
   namespace JSX {
     interface IntrinsicElements {
@@ -6,8 +5,10 @@ declare global {
         goodsNo: string;
         isVisible?: "on" | "off";
         ref?: any;
+        children?: any;
       };
-      "black-box-item": { ref?: any };
+      "black-box-item": { ref?: any; children?: any };
+      "option-filter-button": { ref?: any; children?: any };
     }
   }
 }

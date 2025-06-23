@@ -5,9 +5,15 @@ declare global {
                 goodsNo: string;
                 isVisible?: "on" | "off";
                 ref?: any;
+                children?: any;
             };
             "black-box-item": {
                 ref?: any;
+                children?: any;
+            };
+            "option-filter-button": {
+                ref?: any;
+                children?: any;
             };
         }
     }

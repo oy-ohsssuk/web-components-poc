@@ -98,6 +98,16 @@ export class ReviewInCatalog extends LitElement {
     this.requestUpdate();
   }
 
+  firstUpdated() {
+    this.addEventListener("filter-click", this.handleFilterClick as EventListener);
+  }
+
+  private handleFilterClick = (e: Event) => {
+    console.log("filter!");
+    this.pageNumber++;
+    this.fetchReviewData();
+  };
+
   updated(changed: PropertyValues) {
     super.updated?.(changed);
     if (changed.has("goodsNo")) {
@@ -113,7 +123,7 @@ export class ReviewInCatalog extends LitElement {
     if (this.isVisible === "off") return null;
 
     return html`
-      <option-filter-button @filter-click=${this.handleClick}></option-filter-button>
+      <slot></slot>
       <div style="padding: 0 15px;">상품 번호 : ${this.goodsNo}</div>
       <ul class="review_list">
         ${this.reviews.length === 0

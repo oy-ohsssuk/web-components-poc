@@ -21,8 +21,7 @@ export class BlackBoxItem extends LitElement {
   render() {
     return html`
       <div class="black-box" @click=${this._onBlackBoxClick}>
-        외부 연동 커스텀 이벤트
-        ${this.testObj ? JSON.stringify(this.testObj, null, 2) : ""}
+        외부 연동 커스텀 이벤트 ${this.testObj ? JSON.stringify(this.testObj, null, 2) : ""}
       </div>
     `;
   }

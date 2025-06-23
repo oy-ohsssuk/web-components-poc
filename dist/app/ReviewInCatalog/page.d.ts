@@ -12,6 +12,8 @@ export declare class ReviewInCatalog extends LitElement {
     connectedCallback(): void;
     private handleClick;
     private handleLikeClick;
+    firstUpdated(): void;
+    private handleFilterClick;
     updated(changed: PropertyValues): void;
     render(): import('lit').TemplateResult<1> | null;
 }
