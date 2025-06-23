@@ -12,5 +12,5 @@ declare global {
   }
 }
 
-export { ReviewInCatalog } from "./app/ReviewInCatalog/page";
-export { BlackBoxItem } from "./app/BlackBoxItem/page";
+export { ReviewInCatalog } from "./app/ReviewInCatalog";
+export { BlackBoxItem } from "./app/BlackBoxItem";

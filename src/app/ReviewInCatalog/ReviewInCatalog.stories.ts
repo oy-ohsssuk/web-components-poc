@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/web-components";
 import { html } from "lit";
-import "./page";
+import ".";
 
 const meta: Meta = {
   title: "Web Components/review-in-catalog",

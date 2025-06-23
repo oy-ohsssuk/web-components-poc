@@ -3,6 +3,19 @@ import { customElement, property, state } from "lit/decorators.js";
 import { resetStyles } from "@/styles/reset";
 import "./components/OptionFilterButton";
 
+// 글로벌 타입 선언 (JSX 확장)
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      "review-in-catalog": {
+        goodsNo: string;
+        isVisible?: "on" | "off";
+        ref?: any;
+      };
+    }
+  }
+}
+
 interface Review {
   reviewId: string;
   content: string;
