@@ -1,0 +1,112 @@
+:host {
+  .review-list {
+    padding: 0 15px;
+  }
+  .review-card {
+    border-bottom: 1px solid #eee;
+    padding: 20px 0;
+    margin-bottom: 12px;
+  }
+  .review-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+  .review-avatar {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    border-radius: 50%;
+    background: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .review-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .review-user {
+    font-weight: bold;
+    margin-right: 8px;
+  }
+  .review-score {
+    color: #ffb400;
+    font-size: 18px;
+    margin-right: 8px;
+  }
+  .review-score-num {
+    color: #333;
+    font-size: 14px;
+    margin-left: 2px;
+  }
+  .review-date {
+    color: #bbb;
+    font-size: 12px;
+    margin-left: auto;
+  }
+  .review-option {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 4px;
+  }
+  .review-features {
+    margin-bottom: 6px;
+    font-size: 13px;
+    color: #009688;
+  }
+  .review-feature {
+    margin-right: 10px;
+  }
+  .feature-label {
+    font-weight: 500;
+    margin-right: 2px;
+  }
+  .feature-value {
+    color: #333;
+  }
+  .review-content {
+    margin-bottom: 8px;
+    word-break: break-all;
+    white-space: pre-line;
+    font-size: 15px;
+  }
+  .review-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .review-actions button {
+    border: 1px solid #ddd;
+    background: #fafafa;
+    border-radius: 4px;
+    padding: 4px 10px;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  .review-report {
+    color: #888;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 6px;
+  }
+  .review-empty {
+    background: #eee;
+    width: 100%;
+    height: 200px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    font-size: 16px;
+  }
+}

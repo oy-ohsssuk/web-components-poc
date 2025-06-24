@@ -1,4 +1,5 @@
-import { LitElement, css, html } from "lit";
+import { LitElement, css, html, unsafeCSS } from "lit";
+import st from "./option-filter-button.scss?inline";
 import { customElement, property } from "lit/decorators.js";
 import { resetStyles } from "@/styles/reset";
 
@@ -7,26 +8,7 @@ export class OptionFilterButton extends LitElement {
   static styles = [
     resetStyles,
     css`
-      .filter {
-        width: 100%;
-        padding: 20px 15px;
-
-        button {
-          position: relative;
-          display: block;
-          width: 100%;
-          box-sizing: border-box;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          height: 50px;
-          border-radius: 4px;
-          font-size: 15px;
-          line-height: 18px;
-          letter-spacing: 0;
-          border: 1px solid #000;
-        }
-      }
+      ${unsafeCSS(st)}
     `,
   ];
 

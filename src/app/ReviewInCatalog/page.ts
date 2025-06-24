@@ -1,14 +1,18 @@
-import { LitElement, html, css, PropertyValues } from "lit";
+import { LitElement, html, css, PropertyValues, unsafeCSS } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import { resetStyles } from "@/styles/reset";
+import reviewInCatalogStyles from "./review-in-catalog.scss?inline";
+import { imageViewer } from "./components/ImageViewer";
+import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import "./components/OptionFilterButton";
 
 interface Review {
   reviewId: string;
-  content: string;
-  createdDateTime?: string;
   score: number;
-  likes: number;
+  createdDateTime: string; // yyyy-mm-dd
+  content: string;
+  avatar?: string; // 이미지 경로(있으면)
+  likes: number; // 좋아요 카운트
 }
 
 @customElement("review-in-catalog")
@@ -16,36 +20,7 @@ export class ReviewInCatalog extends LitElement {
   static styles = [
     resetStyles,
     css`
-      .review_list {
-        list-style: none;
-        margin: 0;
-      }
-      .review_item {
-        border-bottom: 1px solid #eee;
-        padding: 12px 15px;
-        &.empty {
-          background: #eee;
-          width: 100%;
-          height: 200px;
-          padding: 0;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-      }
-      .review_user {
-        font-weight: bold;
-        margin-bottom: 4px;
-      }
-      .review_content {
-        margin-bottom: 4px;
-        word-break: break-all;
-        white-space: pre-line;
-      }
-      .review_date {
-        color: #bbb;
-        font-size: 12px;
-      }
+      ${unsafeCSS(reviewInCatalogStyles)}
     `,
   ];
 
@@ -64,9 +39,17 @@ export class ReviewInCatalog extends LitElement {
       .then((res) => res.json())
       .then((data) => {
         if (data && Array.isArray(data.data)) {
-          this.reviews = data.data.map((review: Review) => ({
-            ...review,
-            likes: typeof review.likes === "number" ? review.likes : 0,
+          // 실데이터를 실제 UI에 맞게 파싱 (예시)
+          this.reviews = (data.data || []).map((review: any) => ({
+            reviewId: review.reviewId,
+            score: typeof review.score === "number" ? review.score : 0,
+            createdDateTime: review.createdDateTime ? review.createdDateTime.split(" ")[0] : "",
+            content: review.content || "",
+            avatar:
+              Array.isArray(review.photoReviews) && review.photoReviews.length > 0
+                ? `https://image.oliveyoung.co.kr/uploads/review/${review.photoReviews[0].imagePath}`
+                : undefined,
+            likes: 0,
           }));
           this.requestUpdate();
         } else {
@@ -125,21 +108,73 @@ export class ReviewInCatalog extends LitElement {
     return html`
       <slot></slot>
       <div style="padding: 0 15px;">상품 번호 : ${this.goodsNo}</div>
-      <ul class="review_list">
+      <div class="review-list">
         ${this.reviews.length === 0
-          ? html`<li class="review_item empty">리뷰 없음</li>`
+          ? html`<div class="review-empty">리뷰 없음</div>`
           : this.reviews.map(
               (r: Review, i: number) => html`
-                <li class="review_item">
-                  <div class="review_user">reviewId: ${r.reviewId}</div>
-                  <div class="review_content">${r.content}</div>
-                  <div class="review_date">${r.createdDateTime ? r.createdDateTime.split(" ")[0] : ""}</div>
-                  <div class="review_score">별점: ${r.score}</div>
-                  <button @click=${() => this.handleLikeClick(i)}>좋아요: ${r.likes || 0}</button>
-                </li>
+                <div class="review-card">
+                  <div class="review-header">
+                    <span class="review-avatar">
+                      ${r.avatar
+                        ? imageViewer({
+                            src: "https://image.oliveyoung.co.kr/uploads/images/mbrProfile/2025/06/05/1749085529195.png?RS=0x0&QT=60&SF=webp",
+                            alt: "리뷰 사진",
+                            fallbackSrc: "/placeholder.png",
+                          })
+                        : ""}
+                    </span>
+                    ${unsafeHTML(
+                      `<script type="application/ld+json">${JSON.stringify(
+                        {
+                          "@context": "https://schema.org",
+                          "@type": "Review",
+                          "@id": r.reviewId ? `https://yourdomain.com/review/${r.reviewId}` : undefined,
+                          reviewBody: r.content,
+                          reviewRating: {
+                            "@type": "Rating",
+                            ratingValue: r.score,
+                            bestRating: 5,
+                            worstRating: 1,
+                          },
+                          author: {
+                            "@type": "Person",
+                            name: r.userName || "익명",
+                            ...(r.avatar ? { image: r.avatar } : {}),
+                          },
+                          itemReviewed: {
+                            "@type": "Product",
+                            name: r.goodsName || undefined,
+                            productID: r.goodsNo || undefined,
+                            ...(r.goodsImage ? { image: r.goodsImage } : {}),
+                          },
+                          datePublished: r.createdDateTime || undefined,
+                        },
+                        null,
+                        2
+                      )}</script>`
+                    )}
+                    <span class="review-score">
+                      ${(() => {
+                        // 10점 만점 → 5개 별 환산
+                        const starCount = Math.round((r.score / 10) * 5 * 2) / 2;
+                        const fullStars = Math.floor(starCount);
+                        const halfStar = starCount % 1 >= 0.5;
+                        return `${"★".repeat(fullStars)}${halfStar ? "☆" : ""}${"☆".repeat(5 - fullStars - (halfStar ? 1 : 0))}`;
+                      })()}
+                      <span class="review-score-num">${r.score}</span>
+                    </span>
+                    <span class="review-date">${r.createdDateTime}</span>
+                  </div>
+                  <div class="review-content">${r.content}</div>
+                  <div class="review-actions">
+                    <button @click=${() => this.handleLikeClick(i)}>이 리뷰가 도움이 돼요! <span>${r.likes}</span></button>
+                    <button class="review-report">신고하기</button>
+                  </div>
+                </div>
               `
             )}
-      </ul>
+      </div>
     `;
   }
 }

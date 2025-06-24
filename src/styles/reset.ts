@@ -14,6 +14,7 @@ export const resetStyles = css`
     padding: 0;
     border: 0;
     font: inherit;
+    font-family: "Apple SD Gothic Neo", NotoSansCJKkr, Roboto, Montserrat, sans-serif;
   }
 
   button {
