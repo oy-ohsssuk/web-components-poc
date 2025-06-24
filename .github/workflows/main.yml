@@ -84,10 +84,15 @@ jobs:
           name: dist
           path: dist
 
-      - name: Publish package
-        run: npm publish
+      - name: Set up GitHub Packages auth
+        run: echo "//npm.pkg.github.com/:_authToken=${WC_POC_TOKEN}" > ~/.npmrc
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          WC_POC_TOKEN: ${{ secrets.WC_POC_TOKEN }}
+
+      - name: Publish to GitHub Packages
+        run: npm publish --registry=https://npm.pkg.github.com/ --userconfig ~/.npmrc
+        env:
+          WC_POC_TOKEN: ${{ secrets.WC_POC_TOKEN }}
 
       - name: Get Version from package.json
         run: echo "VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
