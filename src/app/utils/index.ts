@@ -1,1 +1,3 @@
-export { getReviewCount } from "./getReviewCount";
+export * from "./getReviewCount";
+export * from "./reviewScroll";
+export { getReviewCatalogRenderStatusInstance } from "./reviewInCatalogStatus";
