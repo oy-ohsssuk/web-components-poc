@@ -6,6 +6,19 @@ import { imageViewer } from "./components/ImageViewer";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import "./components/OptionFilterButton";
 
+// 글로벌 타입 선언 (JSX 확장)
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      "review-in-catalog": {
+        goodsNo: string;
+        isVisible?: "on" | "off";
+        ref?: any;
+      };
+    }
+  }
+}
+
 interface Review {
   reviewId: string;
   score: number;

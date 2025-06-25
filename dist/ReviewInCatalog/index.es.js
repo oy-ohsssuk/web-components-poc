@@ -3,18 +3,27 @@
  * Copyright 2019 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
+<<<<<<< HEAD:dist/index.es.js
 const H = globalThis, K = H.ShadowRoot && (H.ShadyCSS === void 0 || H.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, Z = Symbol(), rt = /* @__PURE__ */ new WeakMap();
 let ft = class {
+=======
+const H = globalThis, W = H.ShadowRoot && (H.ShadyCSS === void 0 || H.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, F = Symbol(), X = /* @__PURE__ */ new WeakMap();
+let lt = class {
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
   constructor(t, e, s) {
-    if (this._$cssResult$ = !0, s !== Z) throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");
+    if (this._$cssResult$ = !0, s !== F) throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");
     this.cssText = t, this.t = e;
   }
   get styleSheet() {
     let t = this.o;
     const e = this.t;
-    if (K && t === void 0) {
+    if (W && t === void 0) {
       const s = e !== void 0 && e.length === 1;
+<<<<<<< HEAD:dist/index.es.js
       s && (t = rt.get(e)), t === void 0 && ((this.o = t = new CSSStyleSheet()).replaceSync(this.cssText), s && rt.set(e, t));
+=======
+      s && (t = X.get(e)), t === void 0 && ((this.o = t = new CSSStyleSheet()).replaceSync(this.cssText), s && X.set(e, t));
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
     }
     return t;
   }
@@ -22,33 +31,57 @@ let ft = class {
     return this.cssText;
   }
 };
+<<<<<<< HEAD:dist/index.es.js
 const G = (r) => new ft(typeof r == "string" ? r : r + "", void 0, Z), I = (r, ...t) => {
+=======
+const _t = (r) => new lt(typeof r == "string" ? r : r + "", void 0, F), J = (r, ...t) => {
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
   const e = r.length === 1 ? r[0] : t.reduce((s, i, n) => s + ((o) => {
     if (o._$cssResult$ === !0) return o.cssText;
     if (typeof o == "number") return o;
     throw Error("Value passed to 'css' function must be a 'css' function result: " + o + ". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.");
   })(i) + r[n + 1], r[0]);
+<<<<<<< HEAD:dist/index.es.js
   return new ft(e, r, Z);
 }, bt = (r, t) => {
   if (K) r.adoptedStyleSheets = t.map((e) => e instanceof CSSStyleSheet ? e : e.styleSheet);
+=======
+  return new lt(e, r, F);
+}, gt = (r, t) => {
+  if (W) r.adoptedStyleSheets = t.map((e) => e instanceof CSSStyleSheet ? e : e.styleSheet);
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
   else for (const e of t) {
     const s = document.createElement("style"), i = H.litNonce;
     i !== void 0 && s.setAttribute("nonce", i), s.textContent = e.cssText, r.appendChild(s);
   }
+<<<<<<< HEAD:dist/index.es.js
 }, ot = K ? (r) => r : (r) => r instanceof CSSStyleSheet ? ((t) => {
   let e = "";
   for (const s of t.cssRules) e += s.cssText;
   return G(e);
+=======
+}, Y = W ? (r) => r : (r) => r instanceof CSSStyleSheet ? ((t) => {
+  let e = "";
+  for (const s of t.cssRules) e += s.cssText;
+  return _t(e);
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
 })(r) : r;
 /**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
+<<<<<<< HEAD:dist/index.es.js
 const { is: At, defineProperty: wt, getOwnPropertyDescriptor: xt, getOwnPropertyNames: Et, getOwnPropertySymbols: St, getPrototypeOf: Ct } = Object, g = globalThis, nt = g.trustedTypes, Pt = nt ? nt.emptyScript : "", q = g.reactiveElementPolyfillSupport, O = (r, t) => r, D = { toAttribute(r, t) {
   switch (t) {
     case Boolean:
       r = r ? Pt : null;
+=======
+const { is: vt, defineProperty: mt, getOwnPropertyDescriptor: yt, getOwnPropertyNames: At, getOwnPropertySymbols: bt, getPrototypeOf: wt } = Object, _ = globalThis, tt = _.trustedTypes, Et = tt ? tt.emptyScript : "", L = _.reactiveElementPolyfillSupport, P = (r, t) => r, D = { toAttribute(r, t) {
+  switch (t) {
+    case Boolean:
+      r = r ? Et : null;
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
       break;
     case Object:
     case Array:
@@ -73,15 +106,22 @@ const { is: At, defineProperty: wt, getOwnPropertyDescriptor: xt, getOwnProperty
       }
   }
   return e;
+<<<<<<< HEAD:dist/index.es.js
 } }, X = (r, t) => !At(r, t), at = { attribute: !0, type: String, converter: D, reflect: !1, useDefault: !1, hasChanged: X };
 Symbol.metadata ?? (Symbol.metadata = Symbol("metadata")), g.litPropertyMetadata ?? (g.litPropertyMetadata = /* @__PURE__ */ new WeakMap());
 let x = class extends HTMLElement {
+=======
+} }, K = (r, t) => !vt(r, t), et = { attribute: !0, type: String, converter: D, reflect: !1, useDefault: !1, hasChanged: K };
+Symbol.metadata ?? (Symbol.metadata = Symbol("metadata")), _.litPropertyMetadata ?? (_.litPropertyMetadata = /* @__PURE__ */ new WeakMap());
+let b = class extends HTMLElement {
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
   static addInitializer(t) {
     this._$Ei(), (this.l ?? (this.l = [])).push(t);
   }
   static get observedAttributes() {
     return this.finalize(), this._$Eh && [...this._$Eh.keys()];
   }
+<<<<<<< HEAD:dist/index.es.js
   static createProperty(t, e = at) {
     if (e.state && (e.attribute = !1), this._$Ei(), this.prototype.hasOwnProperty(t) && ((e = Object.create(e)).wrapped = !0), this.elementProperties.set(t, e), !e.noAccessor) {
       const s = Symbol(), i = this.getPropertyDescriptor(t, s, e);
@@ -90,6 +130,16 @@ let x = class extends HTMLElement {
   }
   static getPropertyDescriptor(t, e, s) {
     const { get: i, set: n } = xt(this.prototype, t) ?? { get() {
+=======
+  static createProperty(t, e = et) {
+    if (e.state && (e.attribute = !1), this._$Ei(), this.prototype.hasOwnProperty(t) && ((e = Object.create(e)).wrapped = !0), this.elementProperties.set(t, e), !e.noAccessor) {
+      const s = Symbol(), i = this.getPropertyDescriptor(t, s, e);
+      i !== void 0 && mt(this.prototype, t, i);
+    }
+  }
+  static getPropertyDescriptor(t, e, s) {
+    const { get: i, set: n } = yt(this.prototype, t) ?? { get() {
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
       return this[e];
     }, set(o) {
       this[e] = o;
@@ -100,6 +150,7 @@ let x = class extends HTMLElement {
     }, configurable: !0, enumerable: !0 };
   }
   static getPropertyOptions(t) {
+<<<<<<< HEAD:dist/index.es.js
     return this.elementProperties.get(t) ?? at;
   }
   static _$Ei() {
@@ -111,6 +162,19 @@ let x = class extends HTMLElement {
     if (this.hasOwnProperty(O("finalized"))) return;
     if (this.finalized = !0, this._$Ei(), this.hasOwnProperty(O("properties"))) {
       const e = this.properties, s = [...Et(e), ...St(e)];
+=======
+    return this.elementProperties.get(t) ?? et;
+  }
+  static _$Ei() {
+    if (this.hasOwnProperty(P("elementProperties"))) return;
+    const t = wt(this);
+    t.finalize(), t.l !== void 0 && (this.l = [...t.l]), this.elementProperties = new Map(t.elementProperties);
+  }
+  static finalize() {
+    if (this.hasOwnProperty(P("finalized"))) return;
+    if (this.finalized = !0, this._$Ei(), this.hasOwnProperty(P("properties"))) {
+      const e = this.properties, s = [...At(e), ...bt(e)];
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
       for (const i of s) this.createProperty(i, e[i]);
     }
     const t = this[Symbol.metadata];
@@ -129,8 +193,13 @@ let x = class extends HTMLElement {
     const e = [];
     if (Array.isArray(t)) {
       const s = new Set(t.flat(1 / 0).reverse());
+<<<<<<< HEAD:dist/index.es.js
       for (const i of s) e.unshift(ot(i));
     } else t !== void 0 && e.push(ot(t));
+=======
+      for (const i of s) e.unshift(Y(i));
+    } else t !== void 0 && e.push(Y(t));
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
     return e;
   }
   static _$Eu(t, e) {
@@ -159,7 +228,11 @@ let x = class extends HTMLElement {
   }
   createRenderRoot() {
     const t = this.shadowRoot ?? this.attachShadow(this.constructor.shadowRootOptions);
+<<<<<<< HEAD:dist/index.es.js
     return bt(t, this.constructor.elementStyles), t;
+=======
+    return gt(t, this.constructor.elementStyles), t;
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
   }
   connectedCallback() {
     var t;
@@ -200,7 +273,11 @@ let x = class extends HTMLElement {
     var i;
     if (t !== void 0) {
       const n = this.constructor, o = this[t];
+<<<<<<< HEAD:dist/index.es.js
       if (s ?? (s = n.getPropertyOptions(t)), !((s.hasChanged ?? X)(o, e) || s.useDefault && s.reflect && o === ((i = this._$Ej) == null ? void 0 : i.get(t)) && !this.hasAttribute(n._$Eu(t, s)))) return;
+=======
+      if (s ?? (s = n.getPropertyOptions(t)), !((s.hasChanged ?? K)(o, e) || s.useDefault && s.reflect && o === ((i = this._$Ej) == null ? void 0 : i.get(t)) && !this.hasAttribute(n._$Eu(t, s)))) return;
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
       this.C(t, e, s);
     }
     this.isUpdatePending === !1 && (this._$ES = this._$EP());
@@ -276,12 +353,17 @@ let x = class extends HTMLElement {
   firstUpdated(t) {
   }
 };
+<<<<<<< HEAD:dist/index.es.js
 x.elementStyles = [], x.shadowRootOptions = { mode: "open" }, x[O("elementProperties")] = /* @__PURE__ */ new Map(), x[O("finalized")] = /* @__PURE__ */ new Map(), q == null || q({ ReactiveElement: x }), (g.reactiveElementVersions ?? (g.reactiveElementVersions = [])).push("2.1.0");
+=======
+b.elementStyles = [], b.shadowRootOptions = { mode: "open" }, b[P("elementProperties")] = /* @__PURE__ */ new Map(), b[P("finalized")] = /* @__PURE__ */ new Map(), L == null || L({ ReactiveElement: b }), (_.reactiveElementVersions ?? (_.reactiveElementVersions = [])).push("2.1.0");
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
 /**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
+<<<<<<< HEAD:dist/index.es.js
 const k = globalThis, z = k.trustedTypes, ht = z ? z.createPolicy("lit-html", { createHTML: (r) => r }) : void 0, gt = "$lit$", f = `lit$${Math.random().toFixed(9).slice(2)}$`, vt = "?" + f, Ot = `<${vt}>`, A = document, U = () => A.createComment(""), N = (r) => r === null || typeof r != "object" && typeof r != "function", Y = Array.isArray, kt = (r) => Y(r) || typeof (r == null ? void 0 : r[Symbol.iterator]) == "function", V = `[ 	
 \f\r]`, P = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, lt = /-->/g, ct = />/g, _ = RegExp(`>|${V}(?:([^\\s"'>=/]+)(${V}*=${V}*(?:[^ 	
 \f\r"'\`<>=]|("|')|))|$)`, "g"), pt = /'/g, dt = /"/g, _t = /^(?:script|style|textarea|title)$/i, Ut = (r) => (t, ...e) => ({ _$litType$: r, strings: t, values: e }), E = Ut(1), w = Symbol.for("lit-noChange"), p = Symbol.for("lit-nothing"), ut = /* @__PURE__ */ new WeakMap(), m = A.createTreeWalker(A, 129);
@@ -300,19 +382,45 @@ const Nt = (r, t) => {
     n += o === P ? a + Ot : l >= 0 ? (s.push(c), a.slice(0, l) + gt + a.slice(l) + f + $) : a + f + (l === -2 ? h : $);
   }
   return [mt(r, n + (r[e] || "<?>") + (t === 2 ? "</svg>" : t === 3 ? "</math>" : "")), s];
+=======
+const O = globalThis, z = O.trustedTypes, st = z ? z.createPolicy("lit-html", { createHTML: (r) => r }) : void 0, ct = "$lit$", f = `lit$${Math.random().toFixed(9).slice(2)}$`, dt = "?" + f, St = `<${dt}>`, A = document, U = () => A.createComment(""), N = (r) => r === null || typeof r != "object" && typeof r != "function", Z = Array.isArray, Ct = (r) => Z(r) || typeof (r == null ? void 0 : r[Symbol.iterator]) == "function", I = `[ 	
+\f\r]`, x = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, it = /-->/g, rt = />/g, v = RegExp(`>|${I}(?:([^\\s"'>=/]+)(${I}*=${I}*(?:[^ 	
+\f\r"'\`<>=]|("|')|))|$)`, "g"), ot = /'/g, nt = /"/g, pt = /^(?:script|style|textarea|title)$/i, xt = (r) => (t, ...e) => ({ _$litType$: r, strings: t, values: e }), R = xt(1), E = Symbol.for("lit-noChange"), d = Symbol.for("lit-nothing"), ht = /* @__PURE__ */ new WeakMap(), m = A.createTreeWalker(A, 129);
+function ut(r, t) {
+  if (!Z(r) || !r.hasOwnProperty("raw")) throw Error("invalid template strings array");
+  return st !== void 0 ? st.createHTML(t) : t;
+}
+const Pt = (r, t) => {
+  const e = r.length - 1, s = [];
+  let i, n = t === 2 ? "<svg>" : t === 3 ? "<math>" : "", o = x;
+  for (let a = 0; a < e; a++) {
+    const h = r[a];
+    let c, p, l = -1, u = 0;
+    for (; u < h.length && (o.lastIndex = u, p = o.exec(h), p !== null); ) u = o.lastIndex, o === x ? p[1] === "!--" ? o = it : p[1] !== void 0 ? o = rt : p[2] !== void 0 ? (pt.test(p[2]) && (i = RegExp("</" + p[2], "g")), o = v) : p[3] !== void 0 && (o = v) : o === v ? p[0] === ">" ? (o = i ?? x, l = -1) : p[1] === void 0 ? l = -2 : (l = o.lastIndex - p[2].length, c = p[1], o = p[3] === void 0 ? v : p[3] === '"' ? nt : ot) : o === nt || o === ot ? o = v : o === it || o === rt ? o = x : (o = v, i = void 0);
+    const $ = o === v && r[a + 1].startsWith("/>") ? " " : "";
+    n += o === x ? h + St : l >= 0 ? (s.push(c), h.slice(0, l) + ct + h.slice(l) + f + $) : h + f + (l === -2 ? a : $);
+  }
+  return [ut(r, n + (r[e] || "<?>") + (t === 2 ? "</svg>" : t === 3 ? "</math>" : "")), s];
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
 };
-class T {
+class k {
   constructor({ strings: t, _$litType$: e }, s) {
     let i;
     this.parts = [];
     let n = 0, o = 0;
+<<<<<<< HEAD:dist/index.es.js
     const h = t.length - 1, a = this.parts, [c, d] = Nt(t, e);
     if (this.el = T.createElement(c, s), m.currentNode = this.el.content, e === 2 || e === 3) {
+=======
+    const a = t.length - 1, h = this.parts, [c, p] = Pt(t, e);
+    if (this.el = k.createElement(c, s), m.currentNode = this.el.content, e === 2 || e === 3) {
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
       const l = this.el.content.firstChild;
       l.replaceWith(...l.childNodes);
     }
     for (; (i = m.nextNode()) !== null && a.length < h; ) {
       if (i.nodeType === 1) {
+<<<<<<< HEAD:dist/index.es.js
         if (i.hasAttributes()) for (const l of i.getAttributeNames()) if (l.endsWith(gt)) {
           const u = d[o++], $ = i.getAttribute(l).split(f), M = /([.?@])?(.*)/.exec(u);
           a.push({ type: 1, index: n, name: M[2], strings: $, ctor: M[1] === "." ? Rt : M[1] === "?" ? Mt : M[1] === "@" ? Ht : L }), i.removeAttribute(l);
@@ -326,6 +434,21 @@ class T {
           }
         }
       } else if (i.nodeType === 8) if (i.data === vt) a.push({ type: 2, index: n });
+=======
+        if (i.hasAttributes()) for (const l of i.getAttributeNames()) if (l.endsWith(ct)) {
+          const u = p[o++], $ = i.getAttribute(l).split(f), M = /([.?@])?(.*)/.exec(u);
+          h.push({ type: 1, index: n, name: M[2], strings: $, ctor: M[1] === "." ? Ut : M[1] === "?" ? Nt : M[1] === "@" ? kt : j }), i.removeAttribute(l);
+        } else l.startsWith(f) && (h.push({ type: 6, index: n }), i.removeAttribute(l));
+        if (pt.test(i.tagName)) {
+          const l = i.textContent.split(f), u = l.length - 1;
+          if (u > 0) {
+            i.textContent = z ? z.emptyScript : "";
+            for (let $ = 0; $ < u; $++) i.append(l[$], U()), m.nextNode(), h.push({ type: 2, index: ++n });
+            i.append(l[u], U());
+          }
+        }
+      } else if (i.nodeType === 8) if (i.data === dt) h.push({ type: 2, index: n });
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
       else {
         let l = -1;
         for (; (l = i.data.indexOf(f, l + 1)) !== -1; ) a.push({ type: 7, index: n }), l += f.length - 1;
@@ -345,7 +468,11 @@ function S(r, t, e = r, s) {
   const n = N(t) ? void 0 : t._$litDirective$;
   return (i == null ? void 0 : i.constructor) !== n && ((h = i == null ? void 0 : i._$AO) == null || h.call(i, !1), n === void 0 ? i = void 0 : (i = new n(r), i._$AT(r, e, s)), s !== void 0 ? (e._$Co ?? (e._$Co = []))[s] = i : e._$Cl = i), i !== void 0 && (t = S(r, i._$AS(r, t.values), i, s)), t;
 }
+<<<<<<< HEAD:dist/index.es.js
 class Tt {
+=======
+class Ot {
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
   constructor(t, e) {
     this._$AV = [], this._$AN = void 0, this._$AD = t, this._$AM = e;
   }
@@ -362,7 +489,11 @@ class Tt {
     for (; a !== void 0; ) {
       if (o === a.index) {
         let c;
+<<<<<<< HEAD:dist/index.es.js
         a.type === 2 ? c = new R(n, n.nextSibling, this, t) : a.type === 1 ? c = new a.ctor(n, a.name, a.strings, this, t) : a.type === 6 && (c = new Dt(n, this, t)), this._$AV.push(c), a = s[++h];
+=======
+        h.type === 2 ? c = new T(n, n.nextSibling, this, t) : h.type === 1 ? c = new h.ctor(n, h.name, h.strings, this, t) : h.type === 6 && (c = new Tt(n, this, t)), this._$AV.push(c), h = s[++a];
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
       }
       o !== (a == null ? void 0 : a.index) && (n = m.nextNode(), o++);
     }
@@ -373,7 +504,11 @@ class Tt {
     for (const s of this._$AV) s !== void 0 && (s.strings !== void 0 ? (s._$AI(t, s, e), e += s.strings.length - 2) : s._$AI(t[e])), e++;
   }
 }
+<<<<<<< HEAD:dist/index.es.js
 class R {
+=======
+class T {
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
   get _$AU() {
     var t;
     return ((t = this._$AM) == null ? void 0 : t._$AU) ?? this._$Cv;
@@ -393,7 +528,11 @@ class R {
     return this._$AB;
   }
   _$AI(t, e = this) {
+<<<<<<< HEAD:dist/index.es.js
     t = S(this, t, e), N(t) ? t === p || t == null || t === "" ? (this._$AH !== p && this._$AR(), this._$AH = p) : t !== this._$AH && t !== w && this._(t) : t._$litType$ !== void 0 ? this.$(t) : t.nodeType !== void 0 ? this.T(t) : kt(t) ? this.k(t) : this._(t);
+=======
+    t = S(this, t, e), N(t) ? t === d || t == null || t === "" ? (this._$AH !== d && this._$AR(), this._$AH = d) : t !== this._$AH && t !== E && this._(t) : t._$litType$ !== void 0 ? this.$(t) : t.nodeType !== void 0 ? this.T(t) : Ct(t) ? this.k(t) : this._(t);
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
   }
   O(t) {
     return this._$AA.parentNode.insertBefore(t, this._$AB);
@@ -406,6 +545,7 @@ class R {
   }
   $(t) {
     var n;
+<<<<<<< HEAD:dist/index.es.js
     const { values: e, _$litType$: s } = t, i = typeof s == "number" ? this._$AC(t) : (s.el === void 0 && (s.el = T.createElement(mt(s.h, s.h[0]), this.options)), s);
     if (((n = this._$AH) == null ? void 0 : n._$AD) === i) this._$AH.p(e);
     else {
@@ -422,6 +562,24 @@ class R {
     const e = this._$AH;
     let s, i = 0;
     for (const n of t) i === e.length ? e.push(s = new R(this.O(U()), this.O(U()), this, this.options)) : s = e[i], s._$AI(n), i++;
+=======
+    const { values: e, _$litType$: s } = t, i = typeof s == "number" ? this._$AC(t) : (s.el === void 0 && (s.el = k.createElement(ut(s.h, s.h[0]), this.options)), s);
+    if (((n = this._$AH) == null ? void 0 : n._$AD) === i) this._$AH.p(e);
+    else {
+      const o = new Ot(i, this), a = o.u(this.options);
+      o.p(e), this.T(a), this._$AH = o;
+    }
+  }
+  _$AC(t) {
+    let e = ht.get(t.strings);
+    return e === void 0 && ht.set(t.strings, e = new k(t)), e;
+  }
+  k(t) {
+    Z(this._$AH) || (this._$AH = [], this._$AR());
+    const e = this._$AH;
+    let s, i = 0;
+    for (const n of t) i === e.length ? e.push(s = new T(this.O(U()), this.O(U()), this, this.options)) : s = e[i], s._$AI(n), i++;
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
     i < e.length && (this._$AR(s && s._$AB.nextSibling, i), e.length = i);
   }
   _$AR(t = this._$AA.nextSibling, e) {
@@ -436,7 +594,11 @@ class R {
     this._$AM === void 0 && (this._$Cv = t, (e = this._$AP) == null || e.call(this, t));
   }
 }
+<<<<<<< HEAD:dist/index.es.js
 class L {
+=======
+class j {
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
   get tagName() {
     return this.element.tagName;
   }
@@ -461,7 +623,11 @@ class L {
     t === p ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, t ?? "");
   }
 }
+<<<<<<< HEAD:dist/index.es.js
 class Rt extends L {
+=======
+class Ut extends j {
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
   constructor() {
     super(...arguments), this.type = 3;
   }
@@ -469,7 +635,11 @@ class Rt extends L {
     this.element[this.name] = t === p ? void 0 : t;
   }
 }
+<<<<<<< HEAD:dist/index.es.js
 class Mt extends L {
+=======
+class Nt extends j {
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
   constructor() {
     super(...arguments), this.type = 4;
   }
@@ -477,7 +647,11 @@ class Mt extends L {
     this.element.toggleAttribute(this.name, !!t && t !== p);
   }
 }
+<<<<<<< HEAD:dist/index.es.js
 class Ht extends L {
+=======
+class kt extends j {
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
   constructor(t, e, s, i, n) {
     super(t, e, s, i, n), this.type = 5;
   }
@@ -491,7 +665,11 @@ class Ht extends L {
     typeof this._$AH == "function" ? this._$AH.call(((e = this.options) == null ? void 0 : e.host) ?? this.element, t) : this._$AH.handleEvent(t);
   }
 }
+<<<<<<< HEAD:dist/index.es.js
 class Dt {
+=======
+class Tt {
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
   constructor(t, e, s) {
     this.element = t, this.type = 6, this._$AN = void 0, this._$AM = e, this.options = s;
   }
@@ -502,14 +680,24 @@ class Dt {
     S(this, t);
   }
 }
+<<<<<<< HEAD:dist/index.es.js
 const W = k.litHtmlPolyfillSupport;
 W == null || W(T, R), (k.litHtmlVersions ?? (k.litHtmlVersions = [])).push("3.3.0");
 const zt = (r, t, e) => {
+=======
+const B = O.litHtmlPolyfillSupport;
+B == null || B(k, T), (O.litHtmlVersions ?? (O.litHtmlVersions = [])).push("3.3.0");
+const Mt = (r, t, e) => {
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
   const s = (e == null ? void 0 : e.renderBefore) ?? t;
   let i = s._$litPart$;
   if (i === void 0) {
     const n = (e == null ? void 0 : e.renderBefore) ?? null;
+<<<<<<< HEAD:dist/index.es.js
     s._$litPart$ = i = new R(t.insertBefore(U(), n), n, void 0, e ?? {});
+=======
+    s._$litPart$ = i = new T(t.insertBefore(U(), n), n, void 0, e ?? {});
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
   }
   return i._$AI(r), i;
 };
@@ -519,7 +707,11 @@ const zt = (r, t, e) => {
  * SPDX-License-Identifier: BSD-3-Clause
  */
 const y = globalThis;
+<<<<<<< HEAD:dist/index.es.js
 let b = class extends x {
+=======
+class w extends b {
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
   constructor() {
     super(...arguments), this.renderOptions = { host: this }, this._$Do = void 0;
   }
@@ -530,7 +722,11 @@ let b = class extends x {
   }
   update(t) {
     const e = this.render();
+<<<<<<< HEAD:dist/index.es.js
     this.hasUpdated || (this.renderOptions.isConnected = this.isConnected), super.update(t), this._$Do = zt(e, this.renderRoot, this.renderOptions);
+=======
+    this.hasUpdated || (this.renderOptions.isConnected = this.isConnected), super.update(t), this._$Do = Mt(e, this.renderRoot, this.renderOptions);
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
   }
   connectedCallback() {
     var t;
@@ -543,18 +739,30 @@ let b = class extends x {
   render() {
     return w;
   }
+<<<<<<< HEAD:dist/index.es.js
 };
 var $t;
 b._$litElement$ = !0, b.finalized = !0, ($t = y.litElementHydrateSupport) == null || $t.call(y, { LitElement: b });
 const J = y.litElementPolyfillSupport;
 J == null || J({ LitElement: b });
+=======
+}
+var at;
+w._$litElement$ = !0, w.finalized = !0, (at = y.litElementHydrateSupport) == null || at.call(y, { LitElement: w });
+const V = y.litElementPolyfillSupport;
+V == null || V({ LitElement: w });
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
 (y.litElementVersions ?? (y.litElementVersions = [])).push("4.2.0");
 /**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
+<<<<<<< HEAD:dist/index.es.js
 const tt = (r) => (t, e) => {
+=======
+const $t = (r) => (t, e) => {
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
   e !== void 0 ? e.addInitializer(() => {
     customElements.define(r, t);
   }) : customElements.define(r, t);
@@ -564,7 +772,11 @@ const tt = (r) => (t, e) => {
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
+<<<<<<< HEAD:dist/index.es.js
 const jt = { attribute: !0, type: String, converter: D, reflect: !1, hasChanged: X }, It = (r = jt, t, e) => {
+=======
+const Ht = { attribute: !0, type: String, converter: D, reflect: !1, hasChanged: K }, Rt = (r = Ht, t, e) => {
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
   const { kind: s, metadata: i } = e;
   let n = globalThis.litPropertyMetadata.get(i);
   if (n === void 0 && globalThis.litPropertyMetadata.set(i, n = /* @__PURE__ */ new Map()), s === "setter" && ((r = Object.create(r)).wrapped = !0), n.set(e.name, r), s === "accessor") {
@@ -585,8 +797,13 @@ const jt = { attribute: !0, type: String, converter: D, reflect: !1, hasChanged:
   }
   throw Error("Unsupported decorator location: " + s);
 };
+<<<<<<< HEAD:dist/index.es.js
 function B(r) {
   return (t, e) => typeof e == "object" ? It(r, t, e) : ((s, i, n) => {
+=======
+function G(r) {
+  return (t, e) => typeof e == "object" ? Rt(r, t, e) : ((s, i, n) => {
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
     const o = i.hasOwnProperty(n);
     return i.constructor.createProperty(n, s), o ? Object.getOwnPropertyDescriptor(i, n) : void 0;
   })(r, t, e);
@@ -596,10 +813,17 @@ function B(r) {
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
+<<<<<<< HEAD:dist/index.es.js
 function et(r) {
   return B({ ...r, state: !0, attribute: !1 });
 }
 const st = I`
+=======
+function Q(r) {
+  return G({ ...r, state: !0, attribute: !1 });
+}
+const ft = J`
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
   :host {
     all: initial;
     font-family: sans-serif;
@@ -627,6 +851,7 @@ const st = I`
     padding: 0;
     box-sizing: border-box;
   }
+<<<<<<< HEAD:dist/index.es.js
 `, Lt = ":host .review-list{padding:0 15px}:host .review-card{border-bottom:1px solid #eee;padding:20px 0;margin-bottom:12px}:host .review-header{display:flex;align-items:center;gap:12px;margin-bottom:6px}:host .review-avatar{width:40px;height:40px;min-width:40px;min-height:40px;max-width:40px;max-height:40px;border-radius:50%;background:#eee;display:flex;align-items:center;justify-content:center;overflow:hidden}:host .review-avatar img{width:100%;height:100%;object-fit:cover;display:block}:host .review-user{font-weight:700;margin-right:8px}:host .review-score{color:#ffb400;font-size:18px;margin-right:8px}:host .review-score-num{color:#333;font-size:14px;margin-left:2px}:host .review-date{color:#bbb;font-size:12px;margin-left:auto}:host .review-option{font-size:13px;color:#888;margin-bottom:4px}:host .review-features{margin-bottom:6px;font-size:13px;color:#009688}:host .review-feature{margin-right:10px}:host .feature-label{font-weight:500;margin-right:2px}:host .feature-value{color:#333}:host .review-content{margin-bottom:8px;word-break:break-all;white-space:pre-line;font-size:15px}:host .review-actions{display:flex;gap:10px;margin-top:8px}:host .review-actions button{border:1px solid #ddd;background:#fafafa;border-radius:4px;padding:4px 10px;cursor:pointer;font-size:13px}:host .review-report{color:#888;background:none;border:none;cursor:pointer;padding:0 6px}:host .review-empty{background:#eee;width:100%;height:200px;padding:0;display:flex;align-items:center;justify-content:center;color:#888;font-size:16px}";
 function it(r) {
   return r.includes("?") ? "&" : "?";
@@ -701,12 +926,21 @@ Q.directiveName = "unsafeHTML", Q.resultType = 1;
 const Zt = Ft(Q), Gt = ":host{display:block}:host .filter{width:100%;padding:20px 15px}:host .filter button{position:relative;display:block;width:100%;box-sizing:border-box;display:flex;align-items:center;justify-content:center;height:50px;border-radius:4px;font-size:15px;line-height:18px;letter-spacing:0;border:1px solid #000}";
 var Xt = Object.getOwnPropertyDescriptor, Yt = (r, t, e, s) => {
   for (var i = s > 1 ? void 0 : s ? Xt(t, e) : t, n = r.length - 1, o; n >= 0; n--)
+=======
+`;
+var Dt = Object.getOwnPropertyDescriptor, zt = (r, t, e, s) => {
+  for (var i = s > 1 ? void 0 : s ? Dt(t, e) : t, n = r.length - 1, o; n >= 0; n--)
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
     (o = r[n]) && (i = o(i) || i);
   return i;
 };
-let F = class extends b {
+let q = class extends w {
   render() {
+<<<<<<< HEAD:dist/index.es.js
     return E`
+=======
+    return R`
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
       <div class="filter">
         <button @click=${this._onClick}>필터</button>
       </div>
@@ -721,6 +955,7 @@ let F = class extends b {
     );
   }
 };
+<<<<<<< HEAD:dist/index.es.js
 F.styles = [
   st,
   I`
@@ -736,6 +971,42 @@ var te = Object.defineProperty, ee = Object.getOwnPropertyDescriptor, C = (r, t,
   return s && i && te(t, e, i), i;
 };
 let v = class extends b {
+=======
+q.styles = [
+  ft,
+  J`
+      .filter {
+        width: 100%;
+        padding: 20px 15px;
+
+        button {
+          position: relative;
+          display: block;
+          width: 100%;
+          box-sizing: border-box;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 50px;
+          border-radius: 4px;
+          font-size: 15px;
+          line-height: 18px;
+          letter-spacing: 0;
+          border: 1px solid #000;
+        }
+      }
+    `
+];
+q = zt([
+  $t("option-filter-button")
+], q);
+var jt = Object.defineProperty, Lt = Object.getOwnPropertyDescriptor, C = (r, t, e, s) => {
+  for (var i = s > 1 ? void 0 : s ? Lt(t, e) : t, n = r.length - 1, o; n >= 0; n--)
+    (o = r[n]) && (i = (s ? o(t, e, i) : o(i)) || i);
+  return s && i && jt(t, e, i), i;
+};
+let g = class extends w {
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
   constructor() {
     super(), this.goodsNo = "", this.isVisible = "on", this.reviews = [], this.pageSize = 5, this.pageNumber = 0, this.handleFilterClick = (r) => {
       console.log("filter!"), this.pageNumber++, this.fetchReviewData();
@@ -776,6 +1047,7 @@ let v = class extends b {
     (t = super.updated) == null || t.call(this, r), r.has("goodsNo") && (console.log("update: goodsNo"), this.fetchReviewData()), r.has("isVisible") && this.requestUpdate();
   }
   render() {
+<<<<<<< HEAD:dist/index.es.js
     return this.isVisible === "off" ? null : E`
       <slot></slot>
       <div style="padding: 0 15px;">상품 번호 : ${this.goodsNo}</div>
@@ -816,12 +1088,28 @@ let v = class extends b {
                     <button class="review-report">신고하기</button>
                   </div>
                 </div>
+=======
+    return this.isVisible === "off" ? null : R`
+      <option-filter-button @filter-click=${this.handleClick}></option-filter-button>
+      <div style="padding: 0 15px;">상품 번호 : ${this.goodsNo}</div>
+      <ul class="review_list">
+        ${this.reviews.length === 0 ? R`<li class="review_item empty">리뷰 없음</li>` : this.reviews.map(
+      (r, t) => R`
+                <li class="review_item">
+                  <div class="review_user">reviewId: ${r.reviewId}</div>
+                  <div class="review_content">${r.content}</div>
+                  <div class="review_date">${r.createdDateTime ? r.createdDateTime.split(" ")[0] : ""}</div>
+                  <div class="review_score">별점: ${r.score}</div>
+                  <button @click=${() => this.handleLikeClick(t)}>좋아요: ${r.likes || 0}</button>
+                </li>
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
               `
     )}
       </div>
     `;
   }
 };
+<<<<<<< HEAD:dist/index.es.js
 v.styles = [
   st,
   I`
@@ -891,4 +1179,62 @@ j = yt([
 export {
   j as BlackBoxItem,
   v as ReviewInCatalog
+=======
+g.styles = [
+  ft,
+  J`
+      .review_list {
+        list-style: none;
+        margin: 0;
+      }
+      .review_item {
+        border-bottom: 1px solid #eee;
+        padding: 12px 15px;
+        &.empty {
+          background: #eee;
+          width: 100%;
+          height: 200px;
+          padding: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+      .review_user {
+        font-weight: bold;
+        margin-bottom: 4px;
+      }
+      .review_content {
+        margin-bottom: 4px;
+        word-break: break-all;
+        white-space: pre-line;
+      }
+      .review_date {
+        color: #bbb;
+        font-size: 12px;
+      }
+    `
+];
+C([
+  G({ type: String })
+], g.prototype, "goodsNo", 2);
+C([
+  G({ type: String })
+], g.prototype, "isVisible", 2);
+C([
+  Q()
+], g.prototype, "reviews", 2);
+C([
+  Q()
+], g.prototype, "pageSize", 2);
+C([
+  Q()
+], g.prototype, "pageNumber", 2);
+g = C([
+  $t("review-in-catalog")
+], g);
+export {
+  g as ReviewInCatalog
+>>>>>>> feature/CJOYRV-5669:dist/ReviewInCatalog/index.es.js
 };
+//# sourceMappingURL=index.es.js.map

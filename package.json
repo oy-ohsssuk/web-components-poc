@@ -4,16 +4,20 @@
   "version": "1.28.0",
   "license": "UNLICENSED",
   "description": "Lit-based web component poc",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "types": "dist/index.d.ts",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.es.js",
-      "require": "./dist/index.js"
+    "./*": {
+      "types": "./dist/*/index.d.ts",
+      "import": "./dist/*/index.es.js",
+      "require": "./dist/*/index.js"
     },
     "./dist/common.css": "./dist/common.css"
+  },
+  "typesVersions": {
+    "*": {
+      "ReviewInCatalog": [
+        "dist/ReviewInCatalog/index.d.ts"
+      ]
+    }
   },
   "files": [
     "dist"

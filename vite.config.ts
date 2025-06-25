@@ -1,23 +1,28 @@
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
-import path, { resolve } from "path";
+import path from "path";
+
+const entry = process.env.ENTRY || "src/index.ts";
+const outDir = process.env.OUTDIR || "dist";
 
 export default defineConfig({
   build: {
     lib: {
-      entry: resolve(__dirname, "src/index.ts"),
-      name: "ReviewComponent",
-      fileName: (format) => (format === "es" ? "index.es.js" : "index.iife.js"),
+      entry,
+      name: "Component",
       formats: ["es", "iife"],
+      fileName: (format) => `index.${format}.js`,
     },
-    outDir: "dist",
-    emptyOutDir: true,
+    outDir,
+    emptyOutDir: false,
+    sourcemap: true,
   },
   plugins: [
     dts({
-      entryRoot: "src",
-      outDir: "dist",
+      entryRoot: path.dirname(entry),
+      outDir,
       insertTypesEntry: true,
+      rollupTypes: false,
     }),
   ],
   resolve: {
