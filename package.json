@@ -13,10 +13,14 @@
       "import": "./dist/index.es.js",
       "require": "./dist/index.js"
     },
+    "./ssr": {
+      "import": "./ssr/index.mjs"
+    },
     "./dist/common.css": "./dist/common.css"
   },
   "files": [
-    "dist"
+    "dist",
+    "ssr"
   ],
   "scripts": {
     "dev": "vite",
