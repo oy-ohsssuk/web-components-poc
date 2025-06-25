@@ -5,8 +5,6 @@ import path from "path";
 const entry = process.env.ENTRY || "src/index.ts";
 const outDir = process.env.OUTDIR || "dist";
 
-const isUtils = outDir.endsWith("/utils") || outDir === "dist/utils";
-
 export default defineConfig({
   build: {
     lib: {
@@ -27,7 +25,7 @@ export default defineConfig({
       rollupTypes: false,
     }),
   ],
-  publicDir: isUtils ? false : "public",
+  publicDir: false,
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "src"),

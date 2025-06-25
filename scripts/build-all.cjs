@@ -16,3 +16,9 @@ fs.readdirSync(appDir, { withFileTypes: true })
       execSync(`ENTRY=${entry} OUTDIR=dist/${dirent.name} vite build`, { stdio: "inherit" });
     }
   });
+
+const srcPublic = path.resolve(__dirname, "../public");
+const distPublic = path.resolve(__dirname, "../dist/public");
+if (fs.existsSync(srcPublic)) {
+  fs.cpSync(srcPublic, distPublic, { recursive: true });
+}
