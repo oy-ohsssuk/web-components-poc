@@ -2,22 +2,7 @@ import { LitElement, html, css, PropertyValues, unsafeCSS } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import { resetStyles } from "@/styles/reset";
 import reviewInCatalogStyles from "./review-in-catalog.scss?inline";
-import { imageViewer } from "./components/ImageViewer";
-import { unsafeHTML } from "lit/directives/unsafe-html.js";
-import "./components/OptionFilterButton";
-
-// 글로벌 타입 선언 (JSX 확장)
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      "review-in-catalog": {
-        goodsNo: string;
-        isVisible?: "on" | "off";
-        ref?: any;
-      };
-    }
-  }
-}
+import imageViewer from "./imageViewer";
 
 interface Review {
   reviewId: string;
@@ -40,7 +25,7 @@ export class ReviewInCatalog extends LitElement {
   @property({ type: String }) goodsNo: string = "";
   @property({ type: String }) isVisible: "on" | "off" = "on";
   @state() private reviews: Review[] = [];
-  @state() private pageSize: number = 5;
+  @state() private pageSize: number = 20;
   @state() private pageNumber: number = 0;
 
   constructor() {
@@ -126,7 +111,7 @@ export class ReviewInCatalog extends LitElement {
           ? html`<div class="review-empty">리뷰 없음</div>`
           : this.reviews.map(
               (r: Review, i: number) => html`
-                <div class="review-card">
+                <div class="review-card" id="review_${r.reviewId}">
                   <div class="review-header">
                     <span class="review-avatar">
                       ${r.avatar
@@ -137,36 +122,6 @@ export class ReviewInCatalog extends LitElement {
                           })
                         : ""}
                     </span>
-                    ${unsafeHTML(
-                      `<script type="application/ld+json">${JSON.stringify(
-                        {
-                          "@context": "https://schema.org",
-                          "@type": "Review",
-                          "@id": r.reviewId ? `https://yourdomain.com/review/${r.reviewId}` : undefined,
-                          reviewBody: r.content,
-                          reviewRating: {
-                            "@type": "Rating",
-                            ratingValue: r.score,
-                            bestRating: 5,
-                            worstRating: 1,
-                          },
-                          author: {
-                            "@type": "Person",
-                            name: r.userName || "익명",
-                            ...(r.avatar ? { image: r.avatar } : {}),
-                          },
-                          itemReviewed: {
-                            "@type": "Product",
-                            name: r.goodsName || undefined,
-                            productID: r.goodsNo || undefined,
-                            ...(r.goodsImage ? { image: r.goodsImage } : {}),
-                          },
-                          datePublished: r.createdDateTime || undefined,
-                        },
-                        null,
-                        2
-                      )}</script>`
-                    )}
                     <span class="review-score">
                       ${(() => {
                         // 10점 만점 → 5개 별 환산

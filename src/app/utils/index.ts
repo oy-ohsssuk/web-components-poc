@@ -1,0 +1,1 @@
+export { getReviewCount } from "./getReviewCount";
