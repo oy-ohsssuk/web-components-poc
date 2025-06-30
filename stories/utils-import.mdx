@@ -1,0 +1,70 @@
+import { Meta, Source, Canvas, Story } from "@storybook/blocks";
+
+<Meta title="Utils/Import Guide" />
+
+# Utils
+
+<Source language="ts" code={`import { getReviewCount, scrollToReview, getReviewCatalogRenderStatusInstance } from 'src/app/utils';`} />
+
+## getReviewCount
+
+```ts
+getReviewCount(goodsId: string): Promise<number>
+```
+
+**props**
+
+`goodsId: string` 상품의 고유 ID
+
+**return**
+
+`Promise<number>` 리뷰 개수 (비동기)
+
+<br />
+**설명:** 상품의 리뷰 개수를 비동기로 가져옵니다.
+
+---
+
+<br />
+<br />
+
+### <span style={{ fontWeight: 600 }}>scrollToReview</span>
+
+```ts
+scrollToReview(el: HTMLElement, reviewId: string): boolean
+```
+
+**props**
+
+- `el: HTMLElement`  
+  루트 엘리먼트
+- `reviewId: string`  
+  리뷰의 고유 ID
+
+**반환값**
+
+- `boolean`: 스크롤 성공 여부
+
+**설명:**
+특정 리뷰로 스크롤 이동합니다.
+
+---
+
+### <span style={{fontWeight:600}}>getReviewCatalogRenderStatusInstance</span>
+
+```ts
+getReviewCatalogRenderStatusInstance(): RenderStatus | null
+```
+
+**props**
+
+- 없음
+
+**반환값**
+
+- `RenderStatus | null`: `<review-in-catalog>` 엘리먼트의 렌더 상태 인스턴스 또는 null
+
+**설명:**
+`<review-in-catalog>` 엘리먼트의 렌더 상태 인스턴스를 반환합니다.
+
+---

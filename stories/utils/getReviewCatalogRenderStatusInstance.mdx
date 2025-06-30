@@ -1,0 +1,62 @@
+import { Meta, Source } from "@storybook/blocks";
+
+<Meta title="utils/review-in-catalog/getReviewCatalogRenderStatusInstance" />
+
+## getReviewCatalogRenderStatusInstance
+
+```ts
+getReviewCatalogRenderStatusInstance(): RenderStatus | null
+```
+
+**props**
+
+없음
+
+**return**
+
+`RenderStatus | null` `<review-in-catalog>` 엘리먼트의 렌더 상태 인스턴스 또는 null
+
+<br />
+**설명:** `<review-in-catalog>` 엘리먼트의 렌더링 상태 인스턴스를 반환합니다.
+
+---
+
+<br />
+<br />
+<br />
+
+## 사용 예시
+
+`getReviewCatalogRenderStatusInstance`와 `scrollToReview`를 활용하는 예시입니다:
+
+```tsx
+import { getReviewCatalogRenderStatusInstance, scrollToReview } from "src/app/utils";
+
+useEffect(() => {
+  import("review-wc-poc/review");
+}, []);
+
+useEffect(() => {
+  const status = getReviewCatalogRenderStatusInstance();
+  if (!status) {
+    return;
+  }
+  status.onFirstRendered((el) => {
+    console.log("isRendered:", status.isRendered());
+    scrollToReview(el, "1300913");
+  });
+  console.log("isRendered:", status.isRendered());
+
+  status.onError();
+}, [isReviewOn]);
+
+return (
+  isReviewOn && (
+    <review-in-catalog goodsNo={"A000000113670"}>
+      <option-filter-button></option-filter-button>
+    </review-in-catalog>
+  );
+);
+```
+
+---
