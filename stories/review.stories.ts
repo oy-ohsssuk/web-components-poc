@@ -1,11 +1,18 @@
 import { html } from "lit";
-import "../src/app/ReviewInCatalog/layout.ts";
-import "../src/app/ReviewInCatalog/page.ts";
+import "../src/app/review/index.ts";
 import type { Meta, StoryObj } from "@storybook/web-components";
 
 const meta: Meta = {
-  title: "ReviewInCatalog",
+  title: "componenets/review",
   tags: ["autodocs"],
+  parameters: {
+    layout: "fullscreen",
+    docs: {
+      canvas: {
+        sourceState: "shown",
+      },
+    },
+  },
   argTypes: {
     goodsNo: { control: "text" },
     isVisible: { control: { type: "radio" }, options: ["on", "off"] },
@@ -25,5 +32,9 @@ export const Default: Story = {
     goodsNo: "A000000113670",
     isVisible: "on",
   },
-  render: ({ goodsNo, isVisible }: ReviewInCatalogProps) => html` <review-in-catalog goodsNo=${goodsNo} isVisible=${isVisible}></review-in-catalog> `,
+  render: ({ goodsNo, isVisible }: ReviewInCatalogProps) => html`
+    <review-in-catalog goodsNo=${goodsNo} isVisible=${isVisible}>
+      <option-filter-button></option-filter-button>
+    </review-in-catalog>
+  `,
 };

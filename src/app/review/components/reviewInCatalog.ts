@@ -99,7 +99,6 @@ export class ReviewInCatalog extends LitElement {
       this.requestUpdate();
     }
     if (changed.has("reviews") && this.reviews.length > 0) {
-      console.log("change");
       this.dispatchEvent(new CustomEvent("rendered", { bubbles: true }));
     }
   }
