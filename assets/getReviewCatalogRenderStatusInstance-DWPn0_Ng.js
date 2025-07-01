@@ -1,4 +1,4 @@
-import{j as e}from"./index-C0-47mhV.js";import{useMDXComponents as r}from"./index-DnnVRojK.js";import{M as o}from"./index-ffZiHPl_.js";import"./iframe-DeBMMy3M.js";function s(t){const n={code:"code",h2:"h2",hr:"hr",p:"p",pre:"pre",strong:"strong",...r(),...t.components};return e.jsxs(e.Fragment,{children:[e.jsx(o,{title:"utils/review-in-catalog/getReviewCatalogRenderStatusInstance"}),`
+import{j as e}from"./index-C0-47mhV.js";import{useMDXComponents as r}from"./index-DnnVRojK.js";import{M as o}from"./index-CrT14AtR.js";import"./iframe-y9DtTAp1.js";function s(t){const n={code:"code",h2:"h2",hr:"hr",p:"p",pre:"pre",strong:"strong",...r(),...t.components};return e.jsxs(e.Fragment,{children:[e.jsx(o,{title:"utils/review-in-catalog/getReviewCatalogRenderStatusInstance"}),`
 `,e.jsx(n.h2,{id:"getreviewcatalogrenderstatusinstance",children:"getReviewCatalogRenderStatusInstance"}),`
 `,e.jsx(n.pre,{children:e.jsx(n.code,{className:"language-ts",children:`getReviewCatalogRenderStatusInstance(): RenderStatus | null
 `})}),`

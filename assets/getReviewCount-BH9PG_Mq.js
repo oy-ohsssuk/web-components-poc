@@ -1,4 +1,4 @@
-import{j as n}from"./index-C0-47mhV.js";import{useMDXComponents as t}from"./index-DnnVRojK.js";import{M as o}from"./index-ffZiHPl_.js";import"./iframe-DeBMMy3M.js";function s(r){const e={code:"code",h2:"h2",hr:"hr",p:"p",pre:"pre",strong:"strong",...t(),...r.components};return n.jsxs(n.Fragment,{children:[n.jsx(o,{title:"utils/review-in-catalog/getReviewCount"}),`
+import{j as n}from"./index-C0-47mhV.js";import{useMDXComponents as t}from"./index-DnnVRojK.js";import{M as o}from"./index-CrT14AtR.js";import"./iframe-y9DtTAp1.js";function s(r){const e={code:"code",h2:"h2",hr:"hr",p:"p",pre:"pre",strong:"strong",...t(),...r.components};return n.jsxs(n.Fragment,{children:[n.jsx(o,{title:"utils/review-in-catalog/getReviewCount"}),`
 `,n.jsx(e.h2,{id:"getreviewcount",children:"getReviewCount"}),`
 `,n.jsx(e.pre,{children:n.jsx(e.code,{className:"language-ts",children:`getReviewCount(goodsId: string): Promise<number>
 `})}),`
